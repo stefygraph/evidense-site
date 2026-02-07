@@ -16,8 +16,8 @@ export const metadata: Metadata = {
   title: "EvidenSe | Decision Support",
   description: "Evidence-led strategy for international sports governance.",
   icons: {
-    icon: "/favicon.ico", // Chemin vers votre fichier dans le dossier public
-    apple: "/favicon.ico", // Pour les appareils Apple
+    icon: "/favicon.png", // Chemin vers votre fichier dans le dossier public
+    apple: "/favicon.png", // Pour les appareils Apple
   },
 };
 
