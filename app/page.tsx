@@ -13,7 +13,6 @@ export default function Home() {
       {/* Hero Section */}
       <section className="px-6 py-20 md:px-12 md:py-32 flex flex-col justify-center min-h-[80vh]">
         <div className="max-w-4xl">
-          {/* Replaced Advisory line with a Strategic Pillar line */}
           <p className="text-xs uppercase tracking-[0.3em] mb-8 font-semibold text-evidense-ink/70">
             Aide à la décision • Mandats stratégiques • Alignement institutionnel
           </p>
@@ -30,15 +29,30 @@ export default function Home() {
         </div>
       </section>
 
-      {/* The Problem Section - Readability Fix Applied */}
+      {/* The Problem Section */}
       <section className="bg-evidense-ink text-white px-6 py-24 md:px-12 md:py-40 grid md:grid-cols-2 gap-16 items-start">
-        <h2 className="font-serif text-4xl md:text-6xl leading-[1.1] tracking-tight">
+        <h2 className="font-serif text-4xl md:text-6xl leading-[1.1] tracking-tight text-white">
           When decisions matter, intuition is not enough.
         </h2>
         <div className="space-y-8 text-xl md:text-2xl font-light leading-relaxed">
           <p className="text-white/90">
             In complex organisations, decisions involve timing, perception, and long-term consequences. 
             Yet many are still made under pressure with incomplete evidence.
+          </p>
+          <p className="font-semibold text-white border-l-4 border-white/30 pl-6 py-2">
+            EvidenSe brings clarity before the move is made.
+          </p>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="px-6 py-16 md:px-12 bg-evidense-paper border-t border-evidense-ink/10 flex flex-col md:flex-row justify-between text-[11px] font-bold uppercase tracking-[0.3em] text-evidense-ink/60">
+        <p>EvidenSe — Lausanne / Switzerland</p>
+        <p className="mt-6 md:mt-0 text-evidense-ink">© 2026 EvidenSe</p>
+      </footer>
+    </main>
+  );
+}e still made under pressure with incomplete evidence.
           </p>
           <p className="font-semibold text-white border-l-4 border-white/30 pl-6 py-2">
             EvidenSe brings clarity before the move is made.
