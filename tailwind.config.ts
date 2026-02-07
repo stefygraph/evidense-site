@@ -7,9 +7,9 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'evidense-ink': '#0F172A',   // Deep Slate
-        'evidense-paper': '#F8F7F3', // Warm Parchment
-      },
+  'evidense-ink': '#000042',    // Your new deep lead color
+  'evidense-paper': '#F8FAFC',  // Keep the off-white for contrast
+}
       fontFamily: {
         serif: ['var(--font-playfair)', 'serif'],
         sans: ['var(--font-inter)', 'sans-serif'],
