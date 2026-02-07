@@ -17,10 +17,10 @@ export const metadata: Metadata = {
   description: "Evidence-led strategy for international sports governance.",
   icons: {
     icon: [
-      { url: "/favicon.ico?v=3", sizes: "any" },
-      { url: "/favicon.ico?v=3", type: "image/x-icon" },
+      { url: "/favicon.png?v=3", sizes: "any" },
+      { url: "/favicon.png?v=3", type: "image/x-icon" },
     ],
-    apple: "/favicon.ico?v=3",
+    apple: "/favicon.png?v=3",
   },
 };
 
