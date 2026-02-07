@@ -14,18 +14,22 @@ export default function Home() {
       <section className="px-6 py-20 md:px-12 md:py-32 flex flex-col justify-center min-h-[80vh]">
         <div className="max-w-4xl">
           <p className="text-xs uppercase tracking-[0.3em] mb-8 font-semibold text-evidense-ink/70">
-            Aide à la décision • Mandats stratégiques • Alignement institutionnel
+            Decision Support • Strategic Mandates • Institutional Alignment
           </p>
           <h1 className="font-serif text-6xl md:text-9xl leading-[0.9] mb-10 tracking-tighter">
             Better decisions <br className="hidden md:block" /> under pressure.
           </h1>
           <p className="text-xl md:text-3xl font-light leading-relaxed mb-12 max-w-2xl text-evidense-ink/90">
-            EvidenSe helps organisations navigate complex decisions using evidence, audience insight and strategic judgement.
+            EvidenSe supports leaders navigating complex decisions through evidence, audience insight and strategic judgement.
           </p>
-          <button className="w-full md:w-auto bg-evidense-ink text-white px-10 py-5 flex justify-between md:justify-start items-center gap-8 hover:bg-slate-800 transition-all">
+          {/* Updated Button with Mailto Link */}
+          <a 
+            href="mailto:stephane@evidense.io" 
+            className="w-full md:w-auto bg-evidense-ink text-white px-10 py-5 flex justify-between md:justify-start items-center gap-8 hover:bg-slate-800 transition-all inline-flex"
+          >
             <span className="text-sm font-bold uppercase tracking-[0.2em]">Start a conversation</span>
             <ArrowRight size={20} />
-          </button>
+          </a>
         </div>
       </section>
 
