@@ -6,16 +6,14 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
 
 export const metadata: Metadata = {
-  title: "EvidenSe | Better decisions under pressure.",
-  description: "Strategic advisory for sports governance and international organizations.",
+  title: "EvidenSe | Decision Support",
+  description: "Evidence-led strategy for international sports governance.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} ${playfair.variable} antialiased bg-evidense-paper text-evidense-ink`}>
-        {children}
-      </body>
+    <html lang="en">
+      <body className={`${inter.variable} ${playfair.variable} font-sans`}>{children}</body>
     </html>
   );
 }

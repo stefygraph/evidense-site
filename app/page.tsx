@@ -5,7 +5,6 @@ export default function Home() {
     <main className="min-h-screen bg-white">
       {/* Navigation / Logo Area */}
       <nav className="px-6 pt-12 md:px-12 flex justify-between items-center">
-        {/* Playfair Display Bold applied here via font-serif */}
         <span className="font-serif text-4xl md:text-5xl tracking-tighter font-bold text-[#000042] border-b-2 border-[#000042] pb-2">
           EvidenSe
         </span>
@@ -42,9 +41,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* The Problem Section - Using your #000042 color */}
+      {/* The Problem Section */}
       <section className="bg-[#000042] text-white px-6 py-24 md:px-12 md:py-40 grid md:grid-cols-2 gap-16 items-start">
-        <h2 className="font-serif text-4xl md:text-6xl leading-[1.1] tracking-tight">
+        <h2 className="font-serif text-4xl md:text-6xl leading-[1.1] tracking-tight text-white">
           When decisions matter, intuition is not enough.
         </h2>
         <div className="space-y-8 text-xl md:text-2xl font-light leading-relaxed">
