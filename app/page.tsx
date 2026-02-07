@@ -4,10 +4,19 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       {/* Navigation / Logo Area */}
-      <nav className="px-6 pt-12 md:px-12">
-        <span className="font-serif text-4xl md:text-5xl tracking-tighter font-bold border-b-2 border-evidense-ink pb-2">
+      <nav className="px-6 pt-12 md:px-12 flex justify-between items-center">
+        <span className="font-serif text-4xl md:text-5xl tracking-tighter font-bold border-b-2 border-evidense-ink pb-2 text-evidense-ink">
           EvidenSe
         </span>
+        
+        {/* Top Right Secondary Button */}
+        <a 
+          href="mailto:stephane@evidense.io" 
+          className="hidden md:flex items-center gap-4 border border-evidense-ink px-6 py-3 hover:bg-evidense-ink hover:text-white transition-all"
+        >
+          <span className="text-[10px] font-bold uppercase tracking-[0.2em]">Start the conversation</span>
+          <ArrowRight size={14} />
+        </a>
       </nav>
 
       {/* Hero Section */}
@@ -16,18 +25,21 @@ export default function Home() {
           <p className="text-xs uppercase tracking-[0.3em] mb-8 font-semibold text-evidense-ink/70">
             Decision Support • Strategic Mandates • Institutional Alignment
           </p>
-          <h1 className="font-serif text-6xl md:text-9xl leading-[0.9] mb-10 tracking-tighter">
+          
+          <h1 className="font-serif text-6xl md:text-9xl leading-[0.9] mb-10 tracking-tighter text-evidense-ink">
             Better decisions <br className="hidden md:block" /> under pressure.
           </h1>
+          
           <p className="text-xl md:text-3xl font-light leading-relaxed mb-12 max-w-2xl text-evidense-ink/90">
-            EvidenSe supports leaders navigating complex decisions through evidence, audience insight and strategic judgement.
+            EvidenSe helps organisations navigate complex decisions using evidence, audience insight and strategic judgement.
           </p>
-          {/* Updated Button with Mailto Link */}
+          
+          {/* Main Primary Button */}
           <a 
             href="mailto:stephane@evidense.io" 
             className="w-full md:w-auto bg-evidense-ink text-white px-10 py-5 flex justify-between md:justify-start items-center gap-8 hover:bg-slate-800 transition-all inline-flex"
           >
-            <span className="text-sm font-bold uppercase tracking-[0.2em]">Start a conversation</span>
+            <span className="text-sm font-bold uppercase tracking-[0.2em]">Start the conversation</span>
             <ArrowRight size={20} />
           </a>
         </div>
@@ -43,7 +55,7 @@ export default function Home() {
             In complex organisations, decisions involve timing, perception, and long-term consequences. 
             Yet many are still made under pressure with incomplete evidence.
           </p>
-          <p className="font-semibold text-white border-l-4 border-white/30 pl-6 py-2">
+          <p className="font-semibold text-white border-l-4 border-white/30 pl-6 py-2 text-white/100">
             EvidenSe brings clarity before the move is made.
           </p>
         </div>
@@ -51,7 +63,10 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="px-6 py-16 md:px-12 bg-evidense-paper border-t border-evidense-ink/10 flex flex-col md:flex-row justify-between text-[11px] font-bold uppercase tracking-[0.3em] text-evidense-ink/60">
-        <p>EvidenSe — Lausanne / Switzerland</p>
+        <div className="space-y-1">
+          <p>EvidenSe — Lausanne / Switzerland</p>
+          <p className="lowercase tracking-normal font-medium text-evidense-ink">stephane@evidense.io</p>
+        </div>
         <p className="mt-6 md:mt-0 text-evidense-ink">© 2026 EvidenSe</p>
       </footer>
     </main>
