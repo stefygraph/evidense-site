@@ -52,15 +52,4 @@ export default function Home() {
       </footer>
     </main>
   );
-}e still made under pressure with incomplete evidence.
-          </p>
-          <p className="font-semibold text-white border-l-4 border-white/30 pl-6 py-2">
-            EvidenSe brings clarity before the move is made.
-          </p>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="px-6 py-16 md:px-12 bg-evidense-paper border-t border-evidense-ink/10 flex flex-col md:flex-row justify-between text-[11px] font-bold uppercase tracking-[0.3em] text-evidense-ink/60">
-        <p>EvidenSe — Lausanne / Switzerland</p>
-        <p className="mt-6 md:mt-
+}
