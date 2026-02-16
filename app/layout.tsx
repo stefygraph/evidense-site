@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import Script from "next/script"; // <--- CETTE LIGNE MANQUAIT
 
 const inter = Inter({ 
   subsets: ["latin"], 
@@ -33,7 +34,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} ${playfair.variable} font-sans`}>
         {children}
-{/* Google Analytics */}
+
+        {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-EC7CDS2TVX"
           strategy="afterInteractive"
