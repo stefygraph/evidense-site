@@ -33,7 +33,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} ${playfair.variable} font-sans`}>
         {children}
-        <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EC7CDS2TVX"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
