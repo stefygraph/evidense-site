@@ -1,39 +1,25 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}", // <--- C'EST LA LIGNE MAGIQUE QUI MANQUAIT SUREMENT
+  ],
   theme: {
     extend: {
-      typography: {
-        invert: {
-          css: {
-            color: "rgba(248,250,252,0.82)",
-            p: { lineHeight: "1.85" },
-            a: { color: "#F8FAFC", textDecoration: "none" },
-            "a:hover": { textDecoration: "underline" },
-            strong: { color: "#F8FAFC" },
-            h2: {
-              color: "#F8FAFC",
-              fontFamily: "var(--font-playfair)",
-              fontWeight: "700",
-            },
-            h3: {
-              color: "#F8FAFC",
-              fontFamily: "var(--font-playfair)",
-              fontWeight: "700",
-            },
-            hr: { borderColor: "rgba(248,250,252,0.15)" },
-            blockquote: {
-              borderLeftColor: "rgba(248,250,252,0.25)",
-              color: "rgba(248,250,252,0.85)",
-              fontStyle: "normal",
-            },
-            code: { color: "#F8FAFC" },
-          },
-        },
+      fontFamily: {
+        // Ici on connecte tes variables CSS (Inter/Playfair) aux classes Tailwind
+        sans: ['var(--font-inter)', 'sans-serif'],
+        serif: ['var(--font-playfair)', 'serif'],
+      },
+      colors: {
+        // On peut même définir tes couleurs ici pour utiliser 'bg-navy' au lieu de '#000423'
+        navy: '#000423',
+        offwhite: '#f8fafc',
       },
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [],
 };
-
 export default config;
