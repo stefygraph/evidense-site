@@ -1,3 +1,4 @@
+import Image from "next/image"; // <--- LIGNE TRÈS IMPORTANTE À AJOUTER EN HAUT
 import { ArrowRight } from "lucide-react";
 
 export default function Home() {
@@ -5,10 +6,20 @@ export default function Home() {
     <main className="min-h-screen bg-[#000423] text-white">
       {/* Navigation / Logo Area */}
       <nav className="px-6 pt-12 md:px-12 flex justify-between items-center">
-        <span className="font-serif text-4xl md:text-5xl tracking-tighter font-bold border-b-2 border-white pb-2 text-white">
-          EvidenSe
-        </span>
         
+        {/* REMPLACEMENT DU LOGO TEXTE PAR LE SVG */}
+        <div className="relative w-40 md:w-56"> {/* Ici on gère la taille du logo (Largeur) */}
+          <Image
+            src="/logo.svg"
+            alt="EvidenSe Logo"
+            width={220}   // Largeur intrinsèque du fichier (juste pour le ratio)
+            height={80}   // Hauteur intrinsèque (juste pour le ratio)
+            priority      // Charge l'image en priorité (c'est le LCP)
+            className="w-full h-auto" // Rend le logo responsive
+          />
+        </div>
+        
+        {/* Le bouton de droite reste inchangé */}
         <a 
           href="mailto:stephane@evidense.io" 
           className="hidden md:flex items-center gap-4 border border-white/30 px-6 py-3 text-white hover:bg-white hover:text-[#000423] transition-all"

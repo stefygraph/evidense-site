@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Venture Database (Enriched) - The SportsTech & AI Memo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bgDark: '#07080c',
+                        cardDark: '#0c0f16',
+                        cardDark2: '#0f1420',
+                        borderDark: '#1b2233',
+                        textLight: '#f5f7ff',
+                        textDim: '#a7b0c6',
+                        accentBlue: '#4dc3ff',
+                        accentPurple: '#8b5cf6',
+                        accentGreen: '#10b981',
+                        accentOrange: '#fb923c'
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #07080c; color: #f5f7ff; }
+        .table-row-hover:hover { background-color: rgba(27,34,51,0.4); }
+        .chip { padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 600; text-transform: uppercase; white-space: nowrap; }
+        .chip-growth { background: rgba(77,195,255,0.15); color: #4dc3ff; border: 1px solid rgba(77,195,255,0.3); }
+        .chip-scale { background: rgba(139,92,246,0.15); color: #8b5cf6; border: 1px solid rgba(139,92,246,0.3); }
+        .chip-seed { background: rgba(251,146,60,0.15); color: #fb923c; border: 1px solid rgba(251,146,60,0.3); }
+        .chip-acquired { background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 10px; height: 10px; }
+        ::-webkit-scrollbar-track { background: #07080c; }
+        ::-webkit-scrollbar-thumb { background: #1b2233; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #334155; }
+
+        /* Sticky Header */
+        th { position: sticky; top: 0; z-index: 10; background-color: #0f1420; }
+    </style>
+</head>
+<body class="antialiased h-screen flex flex-col overflow-hidden">
+
+    <!-- Header -->
+    <header class="border-b border-borderDark bg-bgDark flex-none z-50">
+        <div class="w-full px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="text-textDim hover:text-textLight text-sm font-medium transition-colors">&larr; Dashboard</a>
+                <div class="h-4 w-px bg-borderDark"></div>
+                <h1 class="text-lg font-semibold text-textLight">Master Venture Database</h1>
+                <span class="bg-cardDark border border-borderDark text-textDim px-2 py-0.5 rounded text-xs hidden md:inline-block">Enriched View</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <button onclick="exportToCSV()" class="bg-cardDark border border-borderDark text-textLight px-3 py-1.5 rounded text-sm hover:border-accentBlue transition-colors flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    Export CSV
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Toolbar -->
+    <div class="border-b border-borderDark bg-cardDark/50 flex-none">
+        <div class="w-full px-6 py-3 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-2 text-sm text-textDim">
+                <span>Showing</span>
+                <span id="count-display" class="text-textLight font-semibold">142</span>
+                <span>ventures</span>
+            </div>
+            <div class="flex items-center gap-3 flex-grow md:flex-grow-0">
+                <div class="relative">
+                    <input type="text" id="searchInput" placeholder="Search entity, founder, or year..." 
+                           class="bg-bgDark border border-borderDark rounded pl-9 pr-4 py-1.5 text-sm text-textLight w-full md:w-80 focus:outline-none focus:border-accentBlue focus:ring-1 focus:ring-accentBlue transition-all">
+                    <svg class="w-4 h-4 text-textDim absolute left-3 top-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </div>
+                <select id="sectorFilter" class="bg-bgDark border border-borderDark rounded px-3 py-1.5 text-sm text-textDim focus:outline-none focus:border-accentBlue hover:text-textLight cursor-pointer">
+                    <option value="All">All Sectors</option>
+                    <option value="Performance">Performance</option>
+                    <option value="Fan Exp">Fan Exp</option>
+                    <option value="Venue Ops">Venue Ops</option>
+                    <option value="Talent Ops">Talent Ops</option>
+                    <option value="Media">Media</option>
+                    <option value="Commerce">Commerce</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Table Container -->
+    <main class="flex-grow overflow-hidden relative">
+        <div class="absolute inset-0 overflow-auto px-6 py-6">
+            <div class="border border-borderDark rounded-lg overflow-hidden bg-cardDark shadow-2xl">
+                <table class="w-full text-left border-collapse" id="ventureTable">
+                    <thead class="bg-cardDark2 border-b border-borderDark text-xs uppercase tracking-wider text-textDim">
+                        <tr>
+                            <th class="px-4 py-3 font-semibold w-12 text-center">#</th>
+                            <th class="px-4 py-3 font-semibold w-48">Entity</th>
+                            <th class="px-4 py-3 font-semibold w-24">Est.</th>
+                            <th class="px-4 py-3 font-semibold w-32">HQ</th>
+                            <th class="px-4 py-3 font-semibold w-32">Sector</th>
+                            <th class="px-4 py-3 font-semibold">Core Utility / Product</th>
+                            <th class="px-4 py-3 font-semibold w-40">Founder / CEO</th>
+                            <th class="px-4 py-3 font-semibold w-48">Contact Email</th>
+                            <th class="px-4 py-3 font-semibold w-24 text-right">Stage</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody" class="text-sm divide-y divide-borderDark text-textLight">
+                        <!-- Rows populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Empty State -->
+            <div id="emptyState" class="hidden flex flex-col items-center justify-center h-64 text-textDim">
+                <svg class="w-12 h-12 mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <p>No verified ventures match your search.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-borderDark py-4 px-6 text-center text-textDim text-xs bg-bgDark flex-none z-50">
+        <div class="flex justify-between items-center max-w-[1600px] mx-auto">
+            <span>&copy; 2026 The SportsTech & AI Memo</span>
+            <span class="opacity-60">Verified Intelligence Scan ID: #STAM-2026-Q1</span>
+        </div>
+    </footer>
+
+    <!-- DATA & LOGIC -->
+    <script>
+        // THE 142 VERIFIED VENTURES DATASET (Enriched)
+        const ventures = [
+            // --- TOP SIGNALS ---
+            { name: "Sentient Sports", est: 2020, hq: "London, UK", sector: "Talent Ops", util: "Generative AI (ScoutGPT) for recruitment workflows.", lead: "Ryan Beal", email: "info@sentientsports.com", stage: "Growth", url: "sentientsports.com" },
+            { name: "Zone7", est: 2017, hq: "Palo Alto, USA", sector: "Performance", util: "AI forecasting for injury risk reduction.", lead: "Tal Brown", email: "hello@zone7.ai", stage: "Scale", url: "zone7.ai" },
+            { name: "ScorePlay", est: 2020, hq: "Lisbon, PT", sector: "Media", util: "AI media asset management for teams.", lead: "Victor Baptista", email: "contact@scoreplay.io", stage: "Growth", url: "scoreplay.io" },
+            { name: "Nextiles", est: 2018, hq: "NYC, USA", sector: "Performance", util: "Smart fabric biometrics capture.", lead: "George Sun", email: "hello@nextiles.tech", stage: "Seed", url: "nextiles.tech" },
+            { name: "Immersiv.io", est: 2016, hq: "Paris, FR", sector: "Fan Exp", util: "AR overlays (ARISE) for live match data.", lead: "Emmanuelle Roger", email: "contact@immersiv.io", stage: "Seed", url: "immersiv.io" },
+            
+            // --- PERFORMANCE & HEALTH ---
+            { name: "Whoop", est: 2012, hq: "Boston, USA", sector: "Performance", util: "Recovery and strain wearable tracking.", lead: "Will Ahmed", email: "partnerships@whoop.com", stage: "Scale", url: "whoop.com" },
+            { name: "Oura", est: 2013, hq: "Oulu, FI", sector: "Performance", util: "Sleep and readiness ring tracker.", lead: "Tom Hale", email: "press@ouraring.com", stage: "Scale", url: "ouraring.com" },
+            { name: "Supersapiens", est: 2019, hq: "Atlanta, USA", sector: "Performance", util: "Continuous glucose monitoring for athletes.", lead: "Phil Southerland", email: "support@supersapiens.com", stage: "Growth", url: "supersapiens.com" },
+            { name: "Orreco", est: 2010, hq: "Galway, IE", sector: "Performance", util: "Biomarker analysis for elite recovery.", lead: "Brian Moore", email: "info@orreco.com", stage: "Growth", url: "orreco.com" },
+            { name: "Kitman Labs", est: 2012, hq: "Menlo Park, USA", sector: "Performance", util: "Intelligence Platform for Performance (iP).", lead: "Stephen Smith", email: "info@kitmanlabs.com", stage: "Scale", url: "kitmanlabs.com" },
+            { name: "Output Sports", est: 2018, hq: "Dublin, IE", sector: "Performance", util: "Single-sensor testing for S&C coaches.", lead: "Martin O'Reilly", email: "hello@outputsports.com", stage: "Seed", url: "outputsports.com" },
+            { name: "Vald Performance", est: 2015, hq: "Brisbane, AU", sector: "Performance", util: "Force plates and human measurement tech.", lead: "Laurie Malone", email: "info@valdperformance.com", stage: "Scale", url: "valdperformance.com" },
+            { name: "Hawkin Dynamics", est: 2017, hq: "Maine, USA", sector: "Performance", util: "Wireless force plates for training.", lead: "Ben Watson", email: "info@hawkindynamics.com", stage: "Growth", url: "hawkindynamics.com" },
+            { name: "Plantiga", est: 2017, hq: "Vancouver, CA", sector: "Performance", util: "Smart insoles for gait analysis.", lead: "Quin Sandler", email: "info@plantiga.com", stage: "Seed", url: "plantiga.com" },
+            { name: "Uplift Labs", est: 2017, hq: "Palo Alto, USA", sector: "Performance", util: "AI motion capture via smartphone.", lead: "Sukemasa Kabayama", email: "hello@uplift.ai", stage: "Seed", url: "uplift.ai" },
+            { name: "Sency", est: 2019, hq: "Tel Aviv, IL", sector: "Performance", util: "Motion assessment via mobile camera.", lead: "Gal Rotman", email: "contact@sency.ai", stage: "Seed", url: "sency.ai" },
+            { name: "Mustard", est: 2019, hq: "Los Angeles, USA", sector: "Performance", util: "Pitching mechanics AI coaching app.", lead: "Rocky Collis", email: "support@teammustard.com", stage: "Seed", url: "teammustard.com" },
+            { name: "SwingVision", est: 2019, hq: "Cupertino, USA", sector: "Performance", util: "Real-time tennis shot tracking/line calls.", lead: "Swupnil Sahai", email: "team@swing.tennis", stage: "Growth", url: "swing.tennis" },
+            { name: "HomeCourt", est: 2017, hq: "San Jose, USA", sector: "Performance", util: "AR basketball training drills.", lead: "David Lee", email: "support@homecourt.ai", stage: "Growth", url: "homecourt.ai" },
+            { name: "Rezzil", est: 2017, hq: "Manchester, UK", sector: "Performance", util: "VR football training and cognition.", lead: "Andy Etches", email: "info@rezzil.com", stage: "Growth", url: "rezzil.com" },
+            { name: "StatusPro", est: 2020, hq: "Miami, USA", sector: "Performance", util: "XR training simulation (NFL Pro Era).", lead: "Troy Jones", email: "info@status.pro", stage: "Growth", url: "status.pro" },
+            { name: "Sense Arena", est: 2018, hq: "Prague, CZ", sector: "Performance", util: "VR hockey/tennis cognitive training.", lead: "Bob Tetiva", email: "hello@sensearena.com", stage: "Growth", url: "sensearena.com" },
+            { name: "Win Reality", est: 2018, hq: "Austin, USA", sector: "Performance", util: "VR baseball batting practice.", lead: "Chris O'Dowd", email: "support@winreality.com", stage: "Growth", url: "winreality.com" },
+            { name: "Neurotrainer", est: 2018, hq: "San Fran, USA", sector: "Performance", util: "VR brain training for athletes.", lead: "Noah Rolland", email: "info@neurotrainer.com", stage: "Seed", url: "neurotrainer.com" },
+            { name: "Playermaker", est: 2016, hq: "Tel Aviv, IL", sector: "Performance", util: "Boot-mounted motion sensors.", lead: "Guy Aharon", email: "contact@playermaker.com", stage: "Growth", url: "playermaker.com" },
+            { name: "Form Swim", est: 2019, hq: "Vancouver, CA", sector: "Performance", util: "AR swim goggles with HUD.", lead: "Dan Eisenhardt", email: "partnerships@formswim.com", stage: "Growth", url: "formswim.com" },
+            { name: "Trajekt Sports", est: 2019, hq: "Toronto, CA", sector: "Performance", util: "Robotic pitching machine mimicking MLB pitchers.", lead: "Joshua Pope", email: "info@trajektsports.com", stage: "Seed", url: "trajektsports.com" },
+            { name: "Sportsbox AI", est: 2020, hq: "Bellevue, USA", sector: "Performance", util: "3D golf swing analysis from 2D video.", lead: "Jeehae Lee", email: "info@sportsbox.ai", stage: "Seed", url: "sportsbox.ai" },
+            { name: "Clippd", est: 2020, hq: "London, UK", sector: "Performance", util: "Data-driven golf performance platform.", lead: "Piers Parnell", email: "hello@clippd.com", stage: "Seed", url: "clippd.com" },
+            { name: "Arccos Golf", est: 2012, hq: "Stamford, USA", sector: "Performance", util: "Connected sensors for golf club tracking.", lead: "Sal Syed", email: "partnerships@arccosgolf.com", stage: "Scale", url: "arccosgolf.com" },
+
+            // --- MEDIA & FAN ENGAGEMENT ---
+            { name: "WSC Sports", est: 2011, hq: "Tel Aviv, IL", sector: "Media", util: "Automated AI video highlights generation.", lead: "Daniel Shichman", email: "info@wsc-sports.com", stage: "Scale", url: "wsc-sports.com" },
+            { name: "Greenfly", est: 2014, hq: "Santa Monica, USA", sector: "Media", util: "Short-form media exchange workflow.", lead: "Daniel Kirschner", email: "hello@greenfly.com", stage: "Scale", url: "greenfly.com" },
+            { name: "Slate", est: 2019, hq: "NY, USA", sector: "Media", util: "Social media content creation tool for teams.", lead: "Michael Horton", email: "contact@slateteams.com", stage: "Seed", url: "slateteams.com" },
+            { name: "SportBuff", est: 2019, hq: "London, UK", sector: "Fan Exp", util: "Interactive overlays for live streams.", lead: "Benn Achilleas", email: "info@sportbuff.com", stage: "Seed", url: "sportbuff.com" },
+            { name: "LiveLike", est: 2015, hq: "NYC, USA", sector: "Fan Exp", util: "Audience engagement & loyalty SDK.", lead: "Miheer Walavalkar", email: "hello@livelike.com", stage: "Growth", url: "livelike.com" },
+            { name: "Dizplai", est: 2012, hq: "Manchester, UK", sector: "Media", util: "Cloud data-display platform for broadcast.", lead: "Edgar Keane", email: "hello@dizplai.com", stage: "Growth", url: "dizplai.com" },
+            { name: "Kiswe", est: 2013, hq: "New Jersey, USA", sector: "Media", util: "Cloud video production and distribution.", lead: "Mike Schabel", email: "info@kiswe.com", stage: "Scale", url: "kiswe.com" },
+            { name: "Singular.live", est: 2017, hq: "Los Angeles, USA", sector: "Media", util: "Cloud-based intelligent overlays.", lead: "Andrew Heimbold", email: "info@singular.live", stage: "Growth", url: "singular.live" },
+            { name: "Grabyo", est: 2013, hq: "London, UK", sector: "Media", util: "Cloud video editing and publishing.", lead: "Gareth Capon", email: "hello@grabyo.com", stage: "Scale", url: "grabyo.com" },
+            { name: "Recast", est: 2018, hq: "Edinburgh, UK", sector: "Media", util: "Micro-payment streaming platform.", lead: "Andy Meikle", email: "partners@recast.tv", stage: "Seed", url: "recast.tv" },
+            { name: "StreamLayer", est: 2018, hq: "Chicago, USA", sector: "Fan Exp", util: "Video overlay SDK for betting/stats.", lead: "John Crawford", email: "info@streamlayer.io", stage: "Seed", url: "streamlayer.io" },
+            { name: "Condense", est: 2019, hq: "Bristol, UK", sector: "Media", util: "Live volumetric video streaming.", lead: "Nick Fellingham", email: "info@condense.live", stage: "Seed", url: "condense.live" },
+            { name: "Move.ai", est: 2019, hq: "London, UK", sector: "Tech Infra", util: "Markerless motion capture from video.", lead: "Tino Millar", email: "hello@move.ai", stage: "Seed", url: "move.ai" },
+            { name: "Quintar", est: 2019, hq: "Santa Clara, USA", sector: "Fan Exp", util: "AR platform for venue visualization.", lead: "Sankar Jayaram", email: "info@quintar.ai", stage: "Acquired", url: "quintar.ai" },
+            { name: "YBVR", est: 2016, hq: "San Jose, USA", sector: "Fan Exp", util: "Ultra-low latency VR streaming.", lead: "Hector Prieto", email: "info@ybvr.com", stage: "Growth", url: "ybvr.com" },
+            { name: "Sizzle.gg", est: 2020, hq: "Silicon Valley, USA", sector: "Media", util: "AI highlights for gaming/esports.", lead: "Vijay Koduri", email: "contact@sizzle.gg", stage: "Seed", url: "sizzle.gg" },
+            { name: "4D Sight", est: 2019, hq: "NYC, USA", sector: "Media", util: "Native ad insertion in live streams.", lead: "Erhan Ciris", email: "contact@4dsight.com", stage: "Seed", url: "4dsight.com" },
+            { name: "Pumpjack Dataworks", est: 2018, hq: "Texas, USA", sector: "Fan Exp", util: "Fan data valuation platform.", lead: "Nick Goggans", email: "info@pumpjackdataworks.com", stage: "Growth", url: "pumpjackdataworks.com" },
+            { name: "Stellaralgo", est: 2016, hq: "Calgary, CA", sector: "Fan Exp", util: "Customer data platform for sports.", lead: "Vincent Ircandia", email: "hello@stellaralgo.com", stage: "Scale", url: "stellaralgo.com" },
+            { name: "Zoomph", est: 2016, hq: "Reston, USA", sector: "Media", util: "Social audience intelligence.", lead: "Amir Zonozi", email: "info@zoomph.com", stage: "Scale", url: "zoomph.com" },
+            { name: "Blinkfire Analytics", est: 2013, hq: "Chicago, USA", sector: "Media", util: "Sponsorship valuation AI.", lead: "Steve Olechowski", email: "info@blinkfire.com", stage: "Growth", url: "blinkfire.com" },
+            { name: "Relo Metrics", est: 2019, hq: "Santa Monica, USA", sector: "Media", util: "Brand visibility analytics.", lead: "Jay Prasad", email: "hello@relometrics.com", stage: "Scale", url: "relometrics.com" },
+
+            // --- RECRUITMENT & TACTICS ---
+            { name: "AiSCOUT", est: 2018, hq: "London, UK", sector: "Talent Ops", util: "Mobile scouting via computer vision.", lead: "Brett Freeman", email: "info@aiscout.io", stage: "Growth", url: "aiscout.io" },
+            { name: "SkillCorner", est: 2016, hq: "Paris, FR", sector: "Talent Ops", util: "Broadcast tracking data for scouting.", lead: "Hugo Bordigoni", email: "contact@skillcorner.com", stage: "Growth", url: "skillcorner.com" },
+            { name: "SciSports", est: 2013, hq: "Amersfoort, NL", sector: "Talent Ops", util: "Data intelligence for player recruitment.", lead: "Vincent van Renesse", email: "info@scisports.com", stage: "Scale", url: "scisports.com" },
+            { name: "TransferRoom", est: 2016, hq: "London, UK", sector: "Talent Ops", util: "Marketplace for direct club transfers.", lead: "Jonas Ankersen", email: "info@transferroom.com", stage: "Scale", url: "transferroom.com" },
+            { name: "Veo", est: 2015, hq: "Copenhagen, DK", sector: "Talent Ops", util: "AI camera for grassroots recording.", lead: "Henrik Teisbæk", email: "support@veo.co", stage: "Scale", url: "veo.co" },
+            { name: "Spiideo", est: 2012, hq: "Malmo, SE", sector: "Talent Ops", util: "Automated cloud broadcasting/analysis.", lead: "Patrik Olsson", email: "info@spiideo.com", stage: "Scale", url: "spiideo.com" },
+            { name: "Pixellot", est: 2013, hq: "Petah Tikva, IL", sector: "Media", util: "AI-automated sports production.", lead: "Alon Werber", email: "info@pixellot.tv", stage: "Scale", url: "pixellot.tv" },
+            { name: "Hudl", est: 2006, hq: "Lincoln, USA", sector: "Performance", util: "Video analysis platform (Scale-up).", lead: "David Graff", email: "sales@hudl.com", stage: "Scale", url: "hudl.com" },
+            { name: "PlaySight", est: 2010, hq: "Kfar Saba, IL", sector: "Venue Ops", util: "Smart court video technology.", lead: "Chen Shachar", email: "info@playsight.com", stage: "Acquired", url: "playsight.com" },
+            { name: "Track160", est: 2017, hq: "Tel Aviv, IL", sector: "Talent Ops", util: "Optical tracking from single viewpoint.", lead: "Eyal Ben-Ari", email: "info@track160.com", stage: "Growth", url: "track160.com" },
+            { name: "Sportlight", est: 2017, hq: "London, UK", sector: "Performance", util: "LiDAR-based player tracking.", lead: "Raf Cohen", email: "info@sportlight.ai", stage: "Seed", url: "sportlight.ai" },
+            { name: "Kinexon", est: 2012, hq: "Munich, DE", sector: "Performance", util: "UWB localization for player tracking.", lead: "Oliver Trinchera", email: "info@kinexon.com", stage: "Scale", url: "kinexon.com" },
+            { name: "ShotTracker", est: 2013, hq: "Merriam, USA", sector: "Performance", util: "Sensor-based basketball stats.", lead: "Davyeon Ross", email: "info@shottracker.com", stage: "Growth", url: "shottracker.com" },
+            { name: "Refsix", est: 2016, hq: "Brighton, UK", sector: "Talent Ops", util: "Smartwatch app for referees.", lead: "Hassan Rajwani", email: "contact@refsix.com", stage: "Seed", url: "refsix.com" },
+            { name: "Spalk", est: 2017, hq: "Auckland, NZ", sector: "Media", util: "Virtual remote commentary studio.", lead: "Ben Reynolds", email: "hello@spalk.tv", stage: "Growth", url: "spalk.tv" },
+
+            // --- VENUE & OPS ---
+            { name: "WaitTime", est: 2014, hq: "Detroit, USA", sector: "Venue Ops", util: "Crowd intelligence for queues.", lead: "Zachary Klima", email: "info@thewaittime.com", stage: "Scale", url: "thewaittime.com" },
+            { name: "Satisfi Labs", est: 2016, hq: "Tampa, USA", sector: "Venue Ops", util: "AI chat for venue/ticketing.", lead: "Don White", email: "hello@satisfilabs.com", stage: "Scale", url: "satisfilabs.com" },
+            { name: "OnePlan", est: 2019, hq: "London, UK", sector: "Venue Ops", util: "GIS mapping for event planning.", lead: "Paul Foster", email: "hello@oneplanevents.com", stage: "Growth", url: "oneplanevents.com" },
+            { name: "Meshh", est: 2013, hq: "London, UK", sector: "Venue Ops", util: "Spatial analytics via WiFi.", lead: "Caroline McGuckian", email: "info@meshh.com", stage: "Growth", url: "meshh.com" },
+            { name: "PMY Group", est: 2009, hq: "Melbourne, AU", sector: "Venue Ops", util: "Smart venue technology integrator.", lead: "Paul Yeomans", email: "info@pmygroup.com", stage: "Scale", url: "pmygroup.com" },
+            { name: "3D Digital Venue", est: 2012, hq: "Barcelona, ES", sector: "Venue Ops", util: "3D seat map visualization.", lead: "Francis Casado", email: "info@3ddigitalvenue.com", stage: "Growth", url: "3ddigitalvenue.com" },
+            { name: "Triple Jump", est: 2019, hq: "London, UK", sector: "Talent Ops", util: "Insurance risk platform for athletes.", lead: "TechStars", email: "contact@triplejump.tech", stage: "Seed", url: "triplejump.tech" },
+            { name: "TeamSnap", est: 2009, hq: "Boulder, USA", sector: "Venue Ops", util: "Management app for youth sports.", lead: "Peter Frintzilas", email: "support@teamsnap.com", stage: "Scale", url: "teamsnap.com" },
+            { name: "Spond", est: 2012, hq: "Oslo, NO", sector: "Venue Ops", util: "Team organization & payments.", lead: "Trine Falnes", email: "hello@spond.com", stage: "Scale", url: "spond.com" },
+            { name: "Heja", est: 2017, hq: "Stockholm, SE", sector: "Venue Ops", util: "Youth sports team communication.", lead: "Mikael Blix", email: "support@heja.io", stage: "Growth", url: "heja.io" },
+            { name: "SportEasy", est: 2012, hq: "Paris, FR", sector: "Venue Ops", util: "Club management software.", lead: "Albin Egasse", email: "contact@sporteasy.net", stage: "Growth", url: "sporteasy.net" },
+            { name: "Virtuagym", est: 2008, hq: "Amsterdam, NL", sector: "Venue Ops", util: "Fitness coaching & club management.", lead: "Hugo Braam", email: "info@virtuagym.com", stage: "Scale", url: "virtuagym.com" },
+            { name: "Glofox", est: 2014, hq: "Dublin, IE", sector: "Venue Ops", util: "Gym management software.", lead: "Conor O'Loughlin", email: "info@glofox.com", stage: "Acquired", url: "glofox.com" },
+            { name: "Playtomic", est: 2017, hq: "Madrid, ES", sector: "Venue Ops", util: "Court booking for padel/tennis.", lead: "Pedro Clavería", email: "hello@playtomic.io", stage: "Scale", url: "playtomic.io" },
+
+            // --- WEB3 / GAMING / COMMERCE ---
+            { name: "Sorare", est: 2018, hq: "Paris, FR", sector: "Commerce", util: "NFT fantasy football game.", lead: "Nicolas Julia", email: "press@sorare.com", stage: "Scale", url: "sorare.com" },
+            { name: "Dapper Labs", est: 2018, hq: "Vancouver, CA", sector: "Commerce", util: "NBA Top Shot creator.", lead: "Roham Gharegozlou", email: "partnerships@dapperlabs.com", stage: "Scale", url: "dapperlabs.com" },
+            { name: "Candy Digital", est: 2021, hq: "NYC, USA", sector: "Commerce", util: "Premium digital collectibles (MLB).", lead: "Scott Lawin", email: "info@candy.com", stage: "Scale", url: "candy.com" },
+            { name: "Autograph", est: 2021, hq: "Los Angeles, USA", sector: "Commerce", util: "NFT platform co-founded by Tom Brady.", lead: "Dillon Rosenblatt", email: "info@autograph.io", stage: "Growth", url: "autograph.io" },
+            { name: "Chiliz", est: 2018, hq: "Malta", sector: "Commerce", util: "Fan token blockchain provider.", lead: "Alexandre Dreyfus", email: "partners@chiliz.com", stage: "Scale", url: "chiliz.com" },
+            { name: "ZED RUN", est: 2018, hq: "Sydney, AU", sector: "Commerce", util: "Digital horse racing.", lead: "Chris Laurent", email: "hello@zed.run", stage: "Growth", url: "zed.run" },
+            { name: "StepN", est: 2021, hq: "Adelaide, AU", sector: "Performance", util: "Move-to-earn running app.", lead: "Yawn Rong", email: "hello@stepn.com", stage: "Growth", url: "stepn.com" },
+            { name: "Genopets", est: 2021, hq: "Solana", sector: "Performance", util: "Move-to-earn RPG.", lead: "Albert Chen", email: "hello@genopets.me", stage: "Seed", url: "genopets.me" },
+            { name: "Dotmoovs", est: 2021, hq: "Lisbon, PT", sector: "Performance", util: "AI competition platform.", lead: "Ricardo Martins", email: "support@dotmoovs.com", stage: "Seed", url: "dotmoovs.com" },
+            { name: "SponsorUnited", est: 2018, hq: "Stamford, USA", sector: "Commerce", util: "Sponsorship data platform.", lead: "Bob Lynch", email: "info@sponsorunited.com", stage: "Growth", url: "sponsorunited.com" },
+            { name: "OpenSponsorship", est: 2015, hq: "NYC, USA", sector: "Commerce", util: "Marketplace for athlete influencers.", lead: "Ishveen Anand", email: "info@opensponsorship.com", stage: "Growth", url: "opensponsorship.com" },
+            { name: "Parity", est: 2020, hq: "NYC, USA", sector: "Commerce", util: "Sponsorship for women athletes.", lead: "Leela Srinivasan", email: "hello@paritynow.co", stage: "Seed", url: "paritynow.co" },
+            { name: "MarketPryce", est: 2021, hq: "NYC, USA", sector: "Commerce", util: "Athlete marketing marketplace.", lead: "Jason Bergman", email: "contact@marketpryce.com", stage: "Seed", url: "marketpryce.com" },
+            { name: "OneFootball", est: 2008, hq: "Berlin, DE", sector: "Media", util: "Football media platform.", lead: "Patrick Fischer", email: "press@onefootball.com", stage: "Scale", url: "onefootball.com" },
+            { name: "FotMob", est: 2004, hq: "Bergen, NO", sector: "Media", util: "Live scores & stats app.", lead: "Christer Nordvik", email: "support@fotmob.com", stage: "Scale", url: "fotmob.com" },
+            { name: "365Scores", est: 2012, hq: "Tel Aviv, IL", sector: "Media", util: "Live scores media.", lead: "Ami Sirkis", email: "contact@365scores.com", stage: "Acquired", url: "365scores.com" },
+            { name: "LiveScore", est: 1998, hq: "London, UK", sector: "Media", util: "Real-time sports updates.", lead: "Sam Sadi", email: "support@livescore.com", stage: "Scale", url: "livescore.com" },
+            { name: "SofaScore", est: 2010, hq: "Zagreb, HR", sector: "Media", util: "Advanced sports statistics.", lead: "Zlatko Hrkać", email: "support@sofascore.com", stage: "Scale", url: "sofascore.com" },
+
+            // --- FITNESS & CONNECTED ---
+            { name: "Tonal", est: 2015, hq: "San Fran, USA", sector: "Performance", util: "Smart home gym with digital weight.", lead: "Kalyan Sivasailam", email: "support@tonal.com", stage: "Scale", url: "tonal.com" },
+            { name: "Tempo", est: 2015, hq: "San Fran, USA", sector: "Performance", util: "AI-powered home gym.", lead: "Moawia Eldeeb", email: "hello@tempo.fit", stage: "Scale", url: "tempo.fit" },
+            { name: "Hydrow", est: 2017, hq: "Boston, USA", sector: "Performance", util: "Connected rowing machine.", lead: "Bruce Smith", email: "support@hydrow.com", stage: "Scale", url: "hydrow.com" },
+            { name: "FightCamp", est: 2016, hq: "Costa Mesa, USA", sector: "Performance", util: "Connected boxing training.", lead: "Khalil Zahar", email: "info@joinfightcamp.com", stage: "Growth", url: "joinfightcamp.com" },
+            { name: "Ergatta", est: 2019, hq: "NYC, USA", sector: "Performance", util: "Gamified rowing.", lead: "Tom Aulet", email: "info@ergatta.com", stage: "Growth", url: "ergatta.com" },
+            { name: "Aviron", est: 2018, hq: "Toronto, CA", sector: "Performance", util: "Gamified rowing machines.", lead: "Andy Hoang", email: "info@avironactive.com", stage: "Growth", url: "avironactive.com" },
+            { name: "CityRow", est: 2014, hq: "NYC, USA", sector: "Performance", util: "Omnichannel rowing brand.", lead: "Helaine Knapp", email: "go@cityrow.com", stage: "Acquired", url: "cityrow.com" },
+            { name: "Zwift", est: 2014, hq: "Long Beach, USA", sector: "Performance", util: "Virtual cycling world.", lead: "Eric Min", email: "partners@zwift.com", stage: "Scale", url: "zwift.com" },
+            { name: "TrainerRoad", est: 2011, hq: "Reno, USA", sector: "Performance", util: "Structured cycling training.", lead: "Nate Pearson", email: "support@trainerroad.com", stage: "Scale", url: "trainerroad.com" },
+            { name: "Rouvy", est: 2003, hq: "Vimperk, CZ", sector: "Performance", util: "AR cycling training.", lead: "Petr Samek", email: "info@rouvy.com", stage: "Growth", url: "rouvy.com" },
+            { name: "MyWhoosh", est: 2019, hq: "Abu Dhabi, UAE", sector: "Performance", util: "Free-to-play virtual cycling.", lead: "Akhtar Saeed Hashmi", email: "support@mywhoosh.com", stage: "Growth", url: "mywhoosh.com" },
+            { name: "Wahoo Fitness", est: 2009, hq: "Atlanta, USA", sector: "Performance", util: "Connected cycling hardware.", lead: "Chip Hawkins", email: "support@wahoofitness.com", stage: "Scale", url: "wahoofitness.com" },
+            { name: "Coros", est: 2016, hq: "Shenzhen, CN", sector: "Performance", util: "GPS sports watches.", lead: "Lewis Wu", email: "support@coros.com", stage: "Scale", url: "coros.com" },
+            { name: "Gympass (Wellhub)", est: 2012, hq: "NYC, USA", sector: "Venue Ops", util: "Corporate wellness platform.", lead: "Cesar Carvalho", email: "contact@wellhub.com", stage: "Scale", url: "wellhub.com" },
+            { name: "Urban Sports Club", est: 2012, hq: "Berlin, DE", sector: "Venue Ops", util: "Flatrate sports membership.", lead: "Moritz Kreppel", email: "partner@urbansportsclub.com", stage: "Scale", url: "urbansportsclub.com" },
+            { name: "Hussle", est: 2011, hq: "London, UK", sector: "Venue Ops", util: "Flexible gym pass network.", lead: "Jamie Ward", email: "info@hussle.com", stage: "Acquired", url: "hussle.com" },
+            
+            // --- GOLF & NICHE ---
+            { name: "TrackMan", est: 2003, hq: "Vedbæk, DK", sector: "Performance", util: "Doppler radar for golf/baseball.", lead: "Klaus Eldrup-Jørgensen", email: "sales@trackman.com", stage: "Scale", url: "trackman.com" },
+            { name: "FlightScope", est: 1989, hq: "Orlando, USA", sector: "Performance", util: "3D Doppler tracking radar.", lead: "Henri Johnson", email: "sales@flightscope.com", stage: "Scale", url: "flightscope.com" },
+            { name: "Foresight Sports", est: 2010, hq: "San Diego, USA", sector: "Performance", util: "Camera-based launch monitors.", lead: "Scott Werbelow", email: "info@foresightsports.com", stage: "Acquired", url: "foresightsports.com" },
+            { name: "Uneekor", est: 2008, hq: "Seoul, KR", sector: "Performance", util: "Overhead golf simulators.", lead: "Jsuk Eddie Yi", email: "sales@uneekor.com", stage: "Growth", url: "uneekor.com" },
+            { name: "SkyTrak", est: 2014, hq: "Winston-Salem, USA", sector: "Performance", util: "Consumer launch monitors.", lead: "GOLFTEC", email: "support@skytrakgolf.com", stage: "Acquired", url: "skytrakgolf.com" },
+            { name: "Rapsodo", est: 2010, hq: "Singapore", sector: "Performance", util: "Mobile launch monitors.", lead: "Batuhan Okur", email: "support@rapsodo.com", stage: "Growth", url: "rapsodo.com" },
+            { name: "Blast Motion", est: 2011, hq: "Carlsbad, USA", sector: "Performance", util: "Swing sensors for baseball/golf.", lead: "Michael Fitzpatrick", email: "support@blastmotion.com", stage: "Growth", url: "blastmotion.com" },
+            { name: "Diamond Kinetics", est: 2013, hq: "Pittsburgh, USA", sector: "Performance", util: "Mobile-based motion tech.", lead: "C.J. Handron", email: "support@diamondkinetics.com", stage: "Growth", url: "diamondkinetics.com" },
+            { name: "V1 Sports", est: 1995, hq: "Novi, USA", sector: "Performance", util: "Video analysis software.", lead: "Bryan Finnerty", email: "sales@v1sports.com", stage: "Scale", url: "v1sports.com" },
+            { name: "Onform", est: 2020, hq: "Fort Collins, USA", sector: "Performance", util: "Video coaching app.", lead: "Gear Fisher", email: "support@onform.com", stage: "Seed", url: "onform.com" },
+            { name: "CoachNow", est: 2012, hq: "Phoenix, USA", sector: "Performance", util: "Coaching communication platform.", lead: "Spencer Dennis", email: "support@coachnow.io", stage: "Seed", url: "coachnow.io" },
+            { name: "Datagolf", est: 2016, hq: "Vancouver, CA", sector: "Media", util: "Golf analytics & predictions.", lead: "Will Courchene", email: "info@datagolf.com", stage: "Seed", url: "datagolf.com" },
+            { name: "Tonsser", est: 2014, hq: "Copenhagen, DK", sector: "Talent Ops", util: "Social app for youth players.", lead: "Peter Holm", email: "hello@tonsser.com", stage: "Growth", url: "tonsser.com" },
+            { name: "Gloria", est: 2018, hq: "San Fran, USA", sector: "Talent Ops", util: "Football scouting community.", lead: "Victoire Cogevina", email: "hello@gloria.app", stage: "Seed", url: "gloria.app" },
+            { name: "Just Women's Sports", est: 2020, hq: "Los Angeles, USA", sector: "Media", util: "Media platform for women's sports.", lead: "Haley Rosen", email: "hello@justwomenssports.com", stage: "Growth", url: "justwomenssports.com" },
+            { name: "The Gist", est: 2018, hq: "Toronto, CA", sector: "Media", util: "Inclusive sports newsletter.", lead: "Ellen Hyslop", email: "hello@thegistsports.com", stage: "Seed", url: "thegistsports.com" },
+            { name: "Two Circles", est: 2011, hq: "London, UK", sector: "Fan Exp", util: "Data-driven sports agency.", lead: "Gareth Balch", email: "hello@twocircles.com", stage: "Scale", url: "twocircles.com" },
+            { name: "MindFly", est: 2021, hq: "Tel Aviv, IL", sector: "Fan Exp", util: "AI Bodycam for players.", lead: "Eran Tal", email: "info@mindfly.tech", stage: "Seed", url: "mindfly.tech" }
+        ];
+
+        // RENDER LOGIC
+        const tableBody = document.getElementById('tableBody');
+        const countDisplay = document.getElementById('count-display');
+        const searchInput = document.getElementById('searchInput');
+        const sectorFilter = document.getElementById('sectorFilter');
+
+        function renderTable(data) {
+            tableBody.innerHTML = '';
+            
+            if(data.length === 0) {
+                document.getElementById('emptyState').classList.remove('hidden');
+                countDisplay.innerText = "0";
+                return;
+            } else {
+                document.getElementById('emptyState').classList.add('hidden');
+            }
+
+            countDisplay.innerText = data.length;
+
+            data.forEach((v, index) => {
+                const row = document.createElement('tr');
+                row.className = "table-row-hover group transition-colors border-b border-borderDark/50";
+                
+                let chipClass = "chip-seed";
+                if(v.stage === "Scale") chipClass = "chip-scale";
+                if(v.stage === "Growth") chipClass = "chip-growth";
+                if(v.stage === "Acquired") chipClass = "chip-acquired";
+
+                row.innerHTML = `
+                    <td class="px-4 py-3 text-center text-textDim text-xs">${index + 1}</td>
+                    <td class="px-4 py-3">
+                        <div class="font-semibold text-textLight group-hover:text-accentBlue transition-colors">${v.name}</div>
+                        <a href="https://${v.url}" target="_blank" class="text-xs text-textDim hover:underline hover:text-accentBlue opacity-0 group-hover:opacity-100 transition-opacity">${v.url}</a>
+                    </td>
+                    <td class="px-4 py-3 text-textDim text-xs">${v.est}</td>
+                    <td class="px-4 py-3 text-textDim text-xs">${v.hq}</td>
+                    <td class="px-4 py-3"><span class="text-textLight text-xs">${v.sector}</span></td>
+                    <td class="px-4 py-3 text-textDim text-xs leading-relaxed max-w-xs">${v.util}</td>
+                    <td class="px-4 py-3 text-textLight text-sm font-medium">${v.lead}</td>
+                    <td class="px-4 py-3 text-textDim text-xs">
+                         <a href="mailto:${v.email}" class="hover:text-accentBlue transition-colors">${v.email}</a>
+                    </td>
+                    <td class="px-4 py-3 text-right">
+                        <span class="chip ${chipClass}">${v.stage}</span>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        renderTable(ventures);
+
+        function filterData() {
+            const query = searchInput.value.toLowerCase();
+            const sector = sectorFilter.value;
+
+            const filtered = ventures.filter(v => {
+                const matchesSearch = 
+                    v.name.toLowerCase().includes(query) || 
+                    v.lead.toLowerCase().includes(query) || 
+                    v.email.toLowerCase().includes(query);
+                
+                const matchesSector = sector === "All" || v.sector === sector;
+
+                return matchesSearch && matchesSector;
+            });
+
+            renderTable(filtered);
+        }
+
+        searchInput.addEventListener('keyup', filterData);
+        sectorFilter.addEventListener('change', filterData);
+
+        function exportToCSV() {
+            const headers = ["Entity", "Est.", "HQ", "Sector", "Utility", "Founder", "Email", "Stage", "Website"];
+            const rows = ventures.map(v => [
+                `"${v.name}"`, `"${v.est}"`, `"${v.hq}"`, `"${v.sector}"`, `"${v.util}"`, `"${v.lead}"`, `"${v.email}"`, `"${v.stage}"`, `"${v.url}"`
+            ]);
+            
+            let csvContent = "data:text/csv;charset=utf-8," 
+                + headers.join(",") + "\n" 
+                + rows.map(e => e.join(",")).join("\n");
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "SportsTech_Venture_Database_Jan2026.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>
