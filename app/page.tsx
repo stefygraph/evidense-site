@@ -35,16 +35,16 @@ export default function Home() {
         <div className="max-w-4xl">
           
           <p className="text-xs uppercase tracking-[0.3em] mb-8 font-semibold text-white/60">
-            Decision Support • Strategic Mandates • Institutional Alignment
+            Independent Advisory for Global Sport
           </p>
           
           {/* Titre immense et serré */}
           <h1 className="font-serif text-6xl md:text-9xl leading-[0.9] mb-10 tracking-tighter text-white">
-            Better decisions <br className="hidden md:block"/> under pressure.
+            Structural clarity <br className="hidden md:block"/> under pressure.
           </h1>
           
           <p className="text-xl md:text-3xl font-light leading-relaxed mb-12 max-w-2xl text-white/80">
-            EvidenSe helps organisations navigate complex decisions using evidence, audience insight and strategic judgement.
+            EvidenSe advises sports leadership, institutions and brands investing in sport on high-impact strategic decisions.
           </p>
 
           {/* Gros Bouton Blanc */}
@@ -62,14 +62,14 @@ export default function Home() {
       {/* --- SECTION 2 --- */}
       <section className="border-t border-white/10 px-6 py-24 md:px-12 md:py-40 grid md:grid-cols-2 gap-16 items-start">
         <h2 className="font-serif text-4xl md:text-6xl leading-[1.1] tracking-tight text-white">
-          When decisions matter, intuition is not enough.
+          When structural decisions shape long-term positioning, perspective matters.
         </h2>
         <div className="space-y-8 text-xl md:text-2xl font-light leading-relaxed">
           <p className="text-white/80">
-            In complex organisations, decisions involve timing, perception, and long-term consequences. Yet many are still made under pressure with incomplete evidence.
+            In complex sport ecosystems, decisions carry political, commercial and reputational consequences that extend beyond the immediate cycle. Yet many are still made within silos and under structural blind spots.
           </p>
           <p className="font-semibold text-white border-l-4 border-white/30 pl-6 py-2">
-            EvidenSe brings clarity before the move is made.
+            EvidenSe provides independent perspective before the move is made.
           </p>
         </div>
       </section>
