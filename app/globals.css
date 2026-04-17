@@ -27,7 +27,7 @@ h1,
 h2,
 h3 {
   font-family: var(--font-playfair), Georgia, "Times New Roman", serif;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.03em;
 }
 
 /* Links: clean, authoritative */
