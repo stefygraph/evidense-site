@@ -9,6 +9,7 @@ const inter = Inter({
 });
 
 const playfair = Playfair_Display({
+  weight: "700",
   subsets: ["latin"],
   variable: "--font-playfair",
   display: "swap",
@@ -16,7 +17,7 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: "EvidenSe | Decision Support",
-  description: "Evidence-led strategy for international sports governance.",
+  description: "EvidenSe supports leaders navigating complex decisions through evidence, audience insight and strategic judgement.",
   icons: {
     icon: [
       { url: "/favicon.png?v=3", sizes: "any" },
@@ -29,8 +30,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
-      <body className="min-h-screen bg-[#000423] text-[#F8FAFC] font-sans antialiased">
-        {/* Optional: subtle frame to reinforce institutional feel */}
+      <body className="min-h-screen bg-background text-foreground">
         <div className="min-h-screen">{children}</div>
       </body>
     </html>

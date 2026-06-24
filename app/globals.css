@@ -1,58 +1,28 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/* --- EvidenSe: Institutional Minimalism --- */
 :root {
-  --e-navy: #000423;
-  --e-offwhite: #f8fafc;
+  /* Brand Palette V2 */
+  --color-warm-light: rgb(243, 241, 236);
+  --color-ink: #070d19; /* Deep ink / dark blue */
+  --color-slate: rgb(87, 99, 112);
+  --color-moss: rgb(95, 122, 108);
+
+  /* REVERSED THEME ASSIGNMENTS */
+  --background: var(--color-ink);
+  --foreground: var(--color-warm-light);
 }
 
-html,
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-playfair);
+}
+
 body {
-  height: 100%;
-  background: var(--e-navy);
-  color: var(--e-offwhite);
-}
-
-/* Typography defaults */
-body {
-  font-family: var(--font-inter), system-ui, -apple-system, Segoe UI, Roboto, Arial,
-    sans-serif;
-  letter-spacing: 0.01em;
-}
-
-/* Headings use Playfair */
-h1,
-h2,
-h3 {
-  font-family: var(--font-playfair), Georgia, "Times New Roman", serif;
-  letter-spacing: -0.03em;
-}
-
-/* Links: clean, authoritative */
-a {
-  color: var(--e-offwhite);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 4px;
-}
-
-/* Selection: discreet but premium */
-::selection {
-  background: rgba(248, 250, 252, 0.18);
-}
-
-/* Focus: no neon, just clean */
-:focus-visible {
-  outline: 2px solid rgba(248, 250, 252, 0.65);
-  outline-offset: 3px;
-}
-
-/* Reduce motion (no gimmicks) */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    scroll-behavior: auto !important;
-    transition: none !important;
-    animation: none !important;
-  }
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
