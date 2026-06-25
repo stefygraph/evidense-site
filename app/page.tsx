@@ -3,15 +3,22 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 
-// --- THE ALIGNMENT MATRIX BACKGROUND COMPONENT (Conservé tel quel) ---
+// --- THE ALIGNMENT MATRIX BACKGROUND COMPONENT ---
 function AlignmentBackground() {
-  const canvasRef = useRef(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
+    
+    // AJOUTE CETTE LIGNE DE SÉCURITÉ POUR TYPESCRIPT :
+    if (!canvas) return; 
+    
     const ctx = canvas.getContext("2d");
-    let width, height;
-    let animationFrameId;
+    if (!ctx) return;
+    
+    let width: number, height: number;
+    let animationFrameId: number;
+    // ... (le reste du code ne bouge pas)
     const particles = [];
     const spacing = 40; // Grid spacing
     let mouse = { x: -1000, y: -1000 };
