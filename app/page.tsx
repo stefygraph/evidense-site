@@ -19,7 +19,7 @@ function AlignmentBackground() {
     let width: number, height: number;
     let animationFrameId: number;
     // ... (le reste du code ne bouge pas)
-    const particles = [];
+const particles: any[] = [];
     const spacing = 40; // Grid spacing
     let mouse = { x: -1000, y: -1000 };
 
