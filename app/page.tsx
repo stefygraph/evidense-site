@@ -3,25 +3,67 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 
-// --- THE ALIGNMENT MATRIX BACKGROUND COMPONENT ---
+// --- THE ALIGNMENT MATRIX BACKGROUND LOGIC (FULLY TYPED) ---
+class MatrixNode {
+  gridX: number;
+  gridY: number;
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  color: string;
+
+  constructor(x: number, y: number) {
+    this.gridX = x;
+    this.gridY = y;
+    this.x = x + (Math.random() - 0.5) * 200;
+    this.y = y + (Math.random() - 0.5) * 200;
+    this.vx = (Math.random() - 0.5) * 0.5;
+    this.vy = (Math.random() - 0.5) * 0.5;
+    this.color = "rgba(255, 255, 255, 0.1)";
+  }
+
+  update(mouse: { x: number; y: number }) {
+    const dx = mouse.x - this.gridX;
+    const dy = mouse.y - this.gridY;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+
+    if (dist < 250) {
+      this.x += (this.gridX - this.x) * 0.1;
+      this.y += (this.gridY - this.y) * 0.1;
+      this.color = "rgba(95, 122, 108, 0.8)";
+    } else {
+      this.x += this.vx;
+      this.y += this.vy;
+      if (Math.abs(this.x - this.gridX) > 150) this.vx *= -1;
+      if (Math.abs(this.y - this.gridY) > 150) this.vy *= -1;
+      this.color = "rgba(255, 255, 255, 0.1)";
+    }
+  }
+
+  draw(ctx: CanvasRenderingContext2D) {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, 1.5, 0, Math.PI * 2);
+    ctx.fillStyle = this.color;
+    ctx.fill();
+  }
+}
+
 function AlignmentBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    
-    // AJOUTE CETTE LIGNE DE SÉCURITÉ POUR TYPESCRIPT :
-    if (!canvas) return; 
-    
+    if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
-    
-    let width: number, height: number;
+
+    let width = window.innerWidth;
+    let height = window.innerHeight;
     let animationFrameId: number;
-    // ... (le reste du code ne bouge pas)
-const particles: any[] = [];
-    const spacing = 40; // Grid spacing
-    let mouse = { x: -1000, y: -1000 };
+    const particles: MatrixNode[] = [];
+    const spacing = 40;
+    const mouse = { x: -1000, y: -1000 };
 
     const resize = () => {
       width = canvas.width = window.innerWidth;
@@ -29,54 +71,16 @@ const particles: any[] = [];
       initParticles();
     };
 
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
       mouse.x = e.clientX;
       mouse.y = e.clientY;
     };
-
-    class Node {
-      constructor(x, y) {
-        this.gridX = x;
-        this.gridY = y;
-        this.x = x + (Math.random() - 0.5) * 200;
-        this.y = y + (Math.random() - 0.5) * 200;
-        this.vx = (Math.random() - 0.5) * 0.5;
-        this.vy = (Math.random() - 0.5) * 0.5;
-        this.color = "rgba(255, 255, 255, 0.1)"; 
-      }
-      
-      update() {
-        let dx = mouse.x - this.gridX;
-        let dy = mouse.y - this.gridY;
-        let dist = Math.sqrt(dx * dx + dy * dy);
-
-        if (dist < 250) {
-          this.x += (this.gridX - this.x) * 0.1;
-          this.y += (this.gridY - this.y) * 0.1;
-          this.color = "rgba(95, 122, 108, 0.8)"; 
-        } else {
-          this.x += this.vx;
-          this.y += this.vy;
-          if (Math.abs(this.x - this.gridX) > 150) this.vx *= -1;
-          if (Math.abs(this.y - this.gridY) > 150) this.vy *= -1;
-          this.x += (this.x + this.vx - this.x) * 0.01;
-          this.color = "rgba(255, 255, 255, 0.1)";
-        }
-      }
-      
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, 1.5, 0, Math.PI * 2);
-        ctx.fillStyle = this.color;
-        ctx.fill();
-      }
-    }
 
     const initParticles = () => {
       particles.length = 0;
       for (let x = 0; x < width + 200; x += spacing) {
         for (let y = 0; y < height + 200; y += spacing) {
-          particles.push(new Node(x, y));
+          particles.push(new MatrixNode(x, y));
         }
       }
     };
@@ -88,12 +92,12 @@ const particles: any[] = [];
     const animate = () => {
       ctx.clearRect(0, 0, width, height);
       particles.forEach((p) => {
-        p.update();
-        p.draw();
+        p.update(mouse);
+        p.draw(ctx);
       });
       animationFrameId = requestAnimationFrame(animate);
     };
-    
+
     animate();
 
     return () => {
@@ -111,8 +115,7 @@ const particles: any[] = [];
   );
 }
 
-
-// --- MAIN PAGE COMPONENT (Contenu conservé) ---
+// --- MAIN PAGE COMPONENT ---
 export default function Home() {
   return (
     <main className="relative min-h-screen selection:bg-[var(--color-moss)] selection:text-white">
@@ -191,7 +194,7 @@ export default function Home() {
         <section className="px-6 md:px-16 pb-32 max-w-7xl mx-auto">
           <div className="space-y-0">
             
-    {/* Pillar 1 */}
+            {/* Pillar 1 */}
             <div className="grid md:grid-cols-[1fr_2fr] gap-12 md:gap-24 py-16 border-t border-[var(--color-slate)]/40">
                <div>
                  <p className="font-sans text-xs tracking-[0.1em] text-foreground/50 uppercase font-bold mb-4">Pillar 01</p>
@@ -211,7 +214,7 @@ export default function Home() {
                </div>
             </div>
 
-    {/* Pillar 2 */}
+            {/* Pillar 2 */}
             <div className="grid md:grid-cols-[1fr_2fr] gap-12 md:gap-24 py-16 border-t border-[var(--color-slate)]/40">
                <div>
                  <p className="font-sans text-xs tracking-[0.1em] text-foreground/50 uppercase font-bold mb-4">Pillar 02</p>
@@ -231,7 +234,7 @@ export default function Home() {
                </div>
             </div>
 
-  {/* Pillar 3 */}
+            {/* Pillar 3 */}
             <div className="grid md:grid-cols-[1fr_2fr] gap-12 md:gap-24 py-16 border-t border-b border-[var(--color-slate)]/40">
                <div>
                  <p className="font-sans text-xs tracking-[0.1em] text-foreground/50 uppercase font-bold mb-4">Pillar 03</p>
@@ -273,7 +276,7 @@ export default function Home() {
           
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-8 md:mb-0">
             
-            {/* Swiss Precision Image - DEUX FOIS PLUS PETIT (30px CSS) */}
+            {/* Swiss Precision Image - 30px CSS */}
             <div className="w-[30px] h-[30px] shrink-0 relative flex items-center justify-center">
                <Image 
                  src="/swiss-precision.png" 
