@@ -10,29 +10,34 @@ export async function POST(request: Request) {
 
     const LOOPS_API_KEY = process.env.LOOPS_API_KEY;
 
-    // Envoi direct à l'API de Loops
     const response = await fetch("https://app.loops.so/api/v1/contacts/create", {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${LOOPS_API_KEY}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ 
-        email, 
-        userGroup: "EvidenSe Newsletter" 
+      body: JSON.stringify({
+        email,
+        userGroup: "EvidenSe Newsletter",
       }),
     });
+
+    // A repeat subscriber returns 409 from Loops. Treat it as success
+    // so they see a success state rather than an error.
+    if (response.status === 409) {
+      return NextResponse.json({ success: true }, { status: 200 });
+    }
 
     if (!response.ok) {
       const errorData = await response.json();
       return NextResponse.json(
-        { error: errorData.message || "Failed to subscribe" }, 
+        { error: errorData.message || "Failed to subscribe" },
         { status: response.status }
       );
     }
 
     return NextResponse.json({ success: true }, { status: 200 });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }
