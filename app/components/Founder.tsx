@@ -1,25 +1,25 @@
+import Image from "next/image";
 import Link from "next/link";
 
 // Section 6. Who is speaking, with a link to /about. Anchor: #founder.
 //
-// TODO(Stéphane), blocking before launch:
-// 1. Photograph. Drop a portrait at /public/stephane.jpg (shot or
-//    cropped against a dark background per the design note) and
-//    replace the placeholder <div> below with a next/image.
-// 2. One hard number from the FEI period, appended to the first
-//    paragraph. The handover note marks this as blocking.
+// TODO(Stéphane), blocking before launch: one hard number from the
+// FEI period, appended to the first paragraph.
 export default function Founder() {
   return (
     <section id="founder" className="px-6 md:px-16 py-20 md:py-28 max-w-7xl mx-auto border-t border-[var(--color-slate)]/40">
       <div className="grid md:grid-cols-[1fr_2fr] gap-10 md:gap-24 items-start">
         <div>
-          {/* Placeholder for the portrait. Replace with next/image once the photograph exists. */}
-          <div
-            className="aspect-[4/5] w-full max-w-xs border border-[var(--color-slate)]/60 flex items-center justify-center"
-            aria-hidden="true"
-          >
-            <span className="font-serif text-5xl text-foreground/20 select-none">SS</span>
-          </div>
+          {/* Portrait treatment (border, slight tone) is the one image
+              treatment on the site, so it reads as deliberate on the
+              dark ground. */}
+          <Image
+            src="/stephane.webp"
+            alt="Stéphane Schwander, founder of EvidenSe, at work in his office"
+            width={1200}
+            height={1500}
+            className="w-full max-w-xs border border-[var(--color-slate)]/60"
+          />
         </div>
 
         <div className="max-w-2xl">

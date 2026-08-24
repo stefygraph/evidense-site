@@ -81,6 +81,7 @@ const structuredData = {
       "@id": `${SITE_URL}/#stephane`,
       name: "Stéphane Schwander",
       url: `${SITE_URL}/about`,
+      image: `${SITE_URL}/stephane.webp`,
       worksFor: { "@id": `${SITE_URL}/#organization` },
       jobTitle: "Founder",
       description:

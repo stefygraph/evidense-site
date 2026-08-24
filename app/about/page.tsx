@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { BOOKING_URL, CONTACT_EMAIL } from "@/lib/site";
@@ -13,9 +14,8 @@ export const metadata: Metadata = {
 };
 
 // TODO(Stéphane), required before launch (handover note, section 11):
-// 1. Photograph at /public/stephane.jpg, working context preferred.
-// 2. UEFA role title and exact years, first paragraph of The career.
-// 3. One hard number from the FEI period, in The FEI story.
+// 1. UEFA role title and exact years, first paragraph of The career.
+// 2. One hard number from the FEI period, in The FEI story.
 
 const PRINCIPLES = [
   {
@@ -45,13 +45,14 @@ export default function AboutPage() {
         {/* Portrait and intro */}
         <section className="pt-16 md:pt-24 pb-16 grid md:grid-cols-[1fr_2fr] gap-10 md:gap-24 items-start">
           <div>
-            {/* Placeholder for the portrait. Replace with next/image once the photograph exists. */}
-            <div
-              className="aspect-[4/5] w-full max-w-xs border border-[var(--color-slate)]/60 flex items-center justify-center"
-              aria-hidden="true"
-            >
-              <span className="font-serif text-5xl text-foreground/20 select-none">SS</span>
-            </div>
+            <Image
+              src="/stephane.webp"
+              alt="Stéphane Schwander, founder of EvidenSe, at work in his office"
+              width={1200}
+              height={1500}
+              priority
+              className="w-full max-w-xs border border-[var(--color-slate)]/60"
+            />
           </div>
 
           <div className="max-w-2xl">
