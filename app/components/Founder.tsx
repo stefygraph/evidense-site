@@ -38,6 +38,10 @@ export default function Founder() {
               I have defended the budget, briefed the board and lived with the consequences. That
               is the difference between advice and a recommendation someone is prepared to sign.
             </p>
+            <p>
+              Alongside the practice, I lecture at Toulouse Business School and advise start-ups,
+              currently as adviser to PickEat.it.
+            </p>
           </div>
           <Link
             href="/about"

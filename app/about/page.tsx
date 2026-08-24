@@ -15,10 +15,7 @@ export const metadata: Metadata = {
 // TODO(Stéphane), required before launch (handover note, section 11):
 // 1. Photograph at /public/stephane.jpg, working context preferred.
 // 2. UEFA role title and exact years, first paragraph of The career.
-// 3. Standing: institutions for lecturer, board adviser, mentor. The
-//    section is omitted until they can be named, because claiming all
-//    three and evidencing none is the worst of both.
-// 4. One hard number from the FEI period, in The FEI story.
+// 3. One hard number from the FEI period, in The FEI story.
 
 const PRINCIPLES = [
   {
@@ -114,10 +111,23 @@ export default function AboutPage() {
           </blockquote>
         </section>
 
-        {/*
-          Standing section deliberately omitted until the institutions
-          can be named. See TODO at the top of this file.
-        */}
+        {/* Standing */}
+        <section className="py-16 border-t border-[var(--color-slate)]/40 grid md:grid-cols-[1fr_2fr] gap-10 md:gap-24 items-start">
+          <h2 className="font-serif text-3xl md:text-4xl text-foreground leading-tight">
+            Beyond the practice.
+          </h2>
+          <div className="font-sans text-lg md:text-xl font-light text-foreground/70 leading-relaxed space-y-6 max-w-2xl">
+            <p>
+              I lecture at Toulouse Business School and have given guest lectures at the
+              University of Lausanne. I advise start-ups, currently as adviser to PickEat.it.
+            </p>
+            <p>
+              The two feed each other. Teaching forces the thesis to be explainable to someone
+              with no stake in agreeing with it, and a founder's board asks harder questions
+              about revenue than most congresses do.
+            </p>
+          </div>
+        </section>
 
         {/* How I work */}
         <section className="py-16 border-t border-[var(--color-slate)]/40">
