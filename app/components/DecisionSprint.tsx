@@ -71,6 +71,8 @@ export default function DecisionSprint() {
 
       <a
         href={BOOKING_URL}
+        target="_blank"
+        rel="noopener noreferrer"
         className="inline-block font-sans text-sm font-semibold uppercase tracking-widest text-foreground border border-foreground/40 px-7 py-3.5 hover:bg-foreground hover:text-background transition-colors"
       >
         Start a conversation

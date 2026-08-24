@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 // TODO(Stéphane), required before launch (handover note, section 11):
-// 1. UEFA role title and exact years, first paragraph of The career.
+// 1. Exact UEFA years, first paragraph of The career.
 // 2. One hard number from the FEI period, in The FEI story.
 
 const PRINCIPLES = [
@@ -61,11 +61,12 @@ export default function AboutPage() {
             </h1>
             <div className="font-sans text-lg md:text-xl font-light text-foreground/70 leading-relaxed space-y-6">
               <p>
-                {/* TODO(Stéphane): add UEFA role title and exact years. */}
-                Nine years at UEFA. Eleven years at the FEI, the international federation for
-                equestrian sport, as Head of Digital and then Head of Content and Platform
-                Management. Co-founder of WNG in 2002. More than two decades of international
-                experience across Olympic federations, European football and start-ups.
+                {/* TODO(Stéphane): add exact UEFA years. */}
+                Nine years at UEFA as Digital Operations Manager. Eleven years at the FEI, the
+                international federation for equestrian sport, as Head of Digital and then Head
+                of Content and Platform Management. Co-founder of WNG in 2002. More than two
+                decades of international experience across Olympic federations, European
+                football and start-ups.
               </p>
             </div>
           </div>
@@ -169,6 +170,8 @@ export default function AboutPage() {
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8">
             <a
               href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="font-sans text-sm font-semibold uppercase tracking-widest text-background bg-foreground px-7 py-3.5 hover:bg-foreground/85 transition-colors"
             >
               Book a call

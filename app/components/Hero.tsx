@@ -23,6 +23,8 @@ export default function Hero() {
       <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8">
         <a
           href={BOOKING_URL}
+          target="_blank"
+          rel="noopener noreferrer"
           className="font-sans text-sm font-semibold uppercase tracking-widest text-background bg-foreground px-7 py-3.5 hover:bg-foreground/85 transition-colors"
         >
           Book a 30 minute call
