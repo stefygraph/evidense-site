@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { SITE_URL } from "@/lib/site";
+import { FOUNDER_SAME_AS, ORG_SAME_AS, SITE_URL } from "@/lib/site";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -33,22 +33,48 @@ export const metadata: Metadata = {
 
 // Organization and Person schema, so the founder and the practice are
 // connected in search.
+const EXPERTISE = [
+  "Sport revenue strategy",
+  "Sponsorship valuation",
+  "Media rights strategy",
+  "Commercial due diligence",
+  "Sports investment advisory",
+  "Olympic and international federation advisory",
+  "Decision support",
+];
+
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Organization",
+      "@type": ["Organization", "ProfessionalService"],
       "@id": `${SITE_URL}/#organization`,
       name: "EvidenSe",
       url: SITE_URL,
       logo: `${SITE_URL}/logo.svg`,
       email: "hello@evidense.io",
+      description:
+        "Independent advisory practice helping sport organisations, rights holders, brands and investors understand where commercial value is really being created, and what to grow, fund, back or stop.",
+      slogan: "Better decisions under pressure.",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Lausanne",
         addressCountry: "CH",
       },
+      areaServed: "Worldwide",
+      knowsAbout: EXPERTISE,
       founder: { "@id": `${SITE_URL}/#stephane` },
+      makesOffer: {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "The Decision Sprint",
+          description:
+            "A fixed-scope engagement of three to four weeks: gather the organisation's commercial, audience, digital and sponsorship data, test pricing, packaging, rights structure and audience quality, and deliver a board ready recommendation on what to grow, hold, reprice or stop.",
+          provider: { "@id": `${SITE_URL}/#organization` },
+        },
+      },
+      ...(ORG_SAME_AS.length > 0 && { sameAs: ORG_SAME_AS }),
     },
     {
       "@type": "Person",
@@ -57,6 +83,18 @@ const structuredData = {
       url: `${SITE_URL}/about`,
       worksFor: { "@id": `${SITE_URL}/#organization` },
       jobTitle: "Founder",
+      description:
+        "Founder of EvidenSe. Nine years at UEFA and eleven at the FEI, the international federation for equestrian sport, as Head of Digital and then Head of Content and Platform Management. Co-founder of WNG in 2002. More than two decades of international experience across Olympic federations, European football and start-ups.",
+      knowsAbout: EXPERTISE,
+      ...(FOUNDER_SAME_AS.length > 0 && { sameAs: FOUNDER_SAME_AS }),
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: "EvidenSe",
+      publisher: { "@id": `${SITE_URL}/#organization` },
+      inLanguage: "en-GB",
     },
   ],
 };
