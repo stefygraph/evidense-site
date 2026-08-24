@@ -40,7 +40,16 @@ export default function Founder() {
             </p>
             <p>
               Alongside the practice, I lecture at Toulouse Business School and advise start-ups,
-              currently as adviser to PickEat.it.
+              currently as adviser to{" "}
+              <a
+                href="https://pickeat.it"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-foreground border-b border-foreground/40 hover:border-foreground transition-colors"
+              >
+                PickEat.it
+              </a>
+              .
             </p>
           </div>
           <Link

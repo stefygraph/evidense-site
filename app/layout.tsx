@@ -87,9 +87,12 @@ const structuredData = {
         "Founder of EvidenSe. Nine years at UEFA and eleven at the FEI, the international federation for equestrian sport, as Head of Digital and then Head of Content and Platform Management. Co-founder of WNG in 2002. Adviser to PickEat.it, lecturer at Toulouse Business School and guest lecturer at the University of Lausanne. More than two decades of international experience across Olympic federations, European football and start-ups.",
       knowsAbout: EXPERTISE,
       affiliation: [
-        { "@type": "Organization", name: "PickEat.it" },
+        { "@type": "Organization", name: "PickEat.it", url: "https://pickeat.it" },
         { "@type": "EducationalOrganization", name: "Toulouse Business School" },
-        { "@type": "EducationalOrganization", name: "University of Lausanne" },
+        {
+          "@type": "EducationalOrganization",
+          name: "University of Lausanne, Institute of Sport Sciences",
+        },
       ],
       ...(FOUNDER_SAME_AS.length > 0 && { sameAs: FOUNDER_SAME_AS }),
     },
