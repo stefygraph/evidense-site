@@ -8,6 +8,7 @@ import { BOOKING_URL, CONTACT_EMAIL } from "@/lib/site";
 // and to close the credibility question for a warm reader. It carries
 // its own metadata for exactly that reason.
 export const metadata: Metadata = {
+  alternates: { canonical: "/about" },
   title: "About Stéphane Schwander | EvidenSe",
   description:
     "Twenty years inside sport's institutions: nine at UEFA, eleven at the FEI. Why EvidenSe exists, and how the work is done.",

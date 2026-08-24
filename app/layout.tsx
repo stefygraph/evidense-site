@@ -19,6 +19,7 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  alternates: { canonical: "/" },
   title: "EvidenSe | Evidence-led advisory for sport revenue decisions",
   description:
     "Independent advisory for sport organisations, rights holders, brands and investors. Three-week decision sprints that show where revenue really is, and what to grow, fund or stop. Based in Lausanne.",
