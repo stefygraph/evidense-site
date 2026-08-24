@@ -3,15 +3,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { BOOKING_URL } from "@/lib/site";
 
-// Sticky header with the four anchors required by the handover note.
-// On the homepage the links smooth-scroll to stable section IDs.
-// From /about (or any other route) the same links resolve absolutely.
+// Sticky header with the four anchors required by the handover note,
+// plus a persistent booking CTA on the right. On the homepage the
+// links smooth-scroll to stable section IDs. From /about (or any
+// other route) the same links resolve absolutely. On mobile the
+// Contact anchor is hidden: the CTA covers the same intent and the
+// row must not overflow.
 const ANCHORS = [
   { label: "Approach", href: "/#approach" },
   { label: "Sprint", href: "/#sprint" },
   { label: "About", href: "/about" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Contact", href: "/#contact", desktopOnly: true },
 ];
 
 export default function Header() {
@@ -32,8 +36,8 @@ export default function Header() {
           : "bg-transparent border-b border-transparent"
       }`}
     >
-      <nav className="px-6 md:px-16 max-w-7xl mx-auto flex items-center justify-between h-16 md:h-20">
-        <Link href="/" aria-label="EvidenSe home" className="relative w-28 md:w-36 shrink-0">
+      <nav className="px-4 sm:px-6 md:px-16 max-w-7xl mx-auto flex items-center justify-between h-16 md:h-20">
+        <Link href="/" aria-label="EvidenSe home" className="relative w-24 md:w-36 shrink-0">
           <Image
             src="/logo.svg"
             alt="EvidenSe"
@@ -44,16 +48,26 @@ export default function Header() {
           />
         </Link>
 
-        <div className="flex items-center gap-5 md:gap-8">
+        <div className="flex items-center gap-3 md:gap-7">
           {ANCHORS.map((a) => (
             <Link
               key={a.label}
               href={a.href}
-              className="font-sans text-xs md:text-sm font-medium text-foreground/70 hover:text-foreground transition-colors tracking-wide"
+              className={`font-sans text-xs md:text-sm font-medium text-foreground/70 hover:text-foreground transition-colors tracking-wide ${
+                a.desktopOnly ? "hidden md:inline" : ""
+              }`}
             >
               {a.label}
             </Link>
           ))}
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-sans text-[11px] md:text-sm font-semibold uppercase tracking-wide md:tracking-wider text-background bg-foreground px-3 md:px-5 py-2 md:py-2.5 hover:bg-foreground/85 transition-colors whitespace-nowrap"
+          >
+            Book a call
+          </a>
         </div>
       </nav>
     </header>
