@@ -1,89 +1,66 @@
-﻿import Link from "next/link";
+import Link from "next/link";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 import { getAllInsights } from "@/lib/insights";
 
 export const metadata = {
-  title: "Insights | EvidenSe",
-  description: "Evidence-led notes for leaders navigating complex decisions.",
+  alternates: { canonical: "/insights" },
+  title: "The Briefing | EvidenSe",
+  description:
+    "Notes for people who decide. Rare, never noise. Evidence-led writing on sport revenue, sponsorship value and decisions under pressure.",
 };
 
 export default function InsightsPage() {
   const insights = getAllInsights();
 
   return (
-    <main className="min-h-screen bg-[#000423] text-[#F8FAFC]">
-      <div className="mx-auto max-w-3xl px-6 py-20 sm:py-24">
-        {/* Kicker (match home) */}
-        <div className="text-xs tracking-[0.22em] uppercase text-[#F8FAFC]/70">
-          Decision Support • Strategic Mandates • Institutional Alignment
-        </div>
+    <main className="relative min-h-screen selection:bg-[var(--color-moss)] selection:text-white">
+      <Header />
 
-        {/* Hero (match home rhythm) */}
-        <h1 className="mt-6 font-serif text-5xl leading-[1.05] tracking-tight sm:text-6xl">
-          Insights
-        </h1>
+      <div className="px-6 md:px-16 max-w-7xl mx-auto">
+        <div className="max-w-3xl pt-16 md:pt-24 pb-16 md:pb-20">
+          <h1 className="font-serif text-4xl md:text-5xl leading-tight tracking-tight text-foreground mb-4">
+            The Briefing.
+          </h1>
+          <p className="font-sans text-lg md:text-xl font-light text-foreground/70 leading-relaxed">
+            Notes for people who decide. Rare, never noise.
+          </p>
 
-        <p className="mt-5 text-base leading-relaxed text-[#F8FAFC]/80">
-          Evidence-led notes for leaders making decisions under pressure.
-        </p>
+          <div className="mt-14 space-y-12">
+            {insights.map((i) => (
+              <article key={i.slug} className="border-t border-[var(--color-slate)]/40 pt-10">
+                <div className="flex flex-wrap items-center gap-x-3 font-sans text-xs uppercase tracking-[0.12em] text-foreground/50">
+                  <time dateTime={i.date}>{i.date}</time>
+                  <span className="text-foreground/25">/</span>
+                  <span>{i.readingTime}</span>
+                </div>
 
-        {/* Primary CTA (match home label) */}
-        <div className="mt-8">
-          <Link
-            href="/contact"
-            className="inline-flex items-center border border-[#F8FAFC] px-5 py-3 text-xs uppercase tracking-[0.18em] hover:bg-[#F8FAFC] hover:text-[#000423]"
-          >
-            Start the conversation
-          </Link>
-        </div>
+                <h2 className="mt-4 font-serif text-2xl md:text-3xl leading-snug tracking-tight text-foreground">
+                  <Link
+                    href={`/insights/${String(i.slug)}`}
+                    className="hover:text-foreground/80 transition-colors"
+                  >
+                    {i.title}
+                  </Link>
+                </h2>
 
-        <div className="mt-12 h-px w-full bg-[#F8FAFC]/15" />
+                <p className="mt-4 font-sans text-base md:text-lg font-light text-foreground/70 leading-relaxed">
+                  {i.description}
+                </p>
 
-        {/* List (editorial, not cardy) */}
-        <div className="mt-12 space-y-10">
-          {insights.map((i) => (
-            <article key={i.slug} className="pb-10">
-              <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-[#F8FAFC]/70">
-                <time dateTime={i.date}>{i.date}</time>
-                <span className="text-[#F8FAFC]/30">/</span>
-                <span>{i.readingTime}</span>
-              </div>
-
-              <h2 className="mt-3 font-serif text-2xl leading-snug tracking-tight">
                 <Link
                   href={`/insights/${String(i.slug)}`}
-                  className="underline-offset-4 hover:underline"
+                  className="inline-block mt-5 font-sans text-sm font-medium text-foreground/80 border-b border-foreground/40 pb-0.5 hover:text-foreground hover:border-foreground transition-colors"
                 >
-                  {i.title}
+                  Read the note &rarr;
                 </Link>
-              </h2>
-
-              <p className="mt-3 text-sm leading-relaxed text-[#F8FAFC]/80">
-                {i.description}
-              </p>
-
-              {i.tags?.length > 0 && (
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {i.tags.map((t) => (
-                    <span
-                      key={t}
-                      className="border border-[#F8FAFC]/20 px-3 py-1 text-[11px] tracking-wide text-[#F8FAFC]/75"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              )}
-
-              <div className="mt-10 h-px w-full bg-[#F8FAFC]/10" />
-            </article>
-          ))}
-        </div>
-
-        {/* Footer line (match home tone) */}
-        <div className="mt-10 text-xs tracking-[0.22em] uppercase text-[#F8FAFC]/70">
-          EvidenSe — Lausanne / Switzerland
+              </article>
+            ))}
+          </div>
         </div>
       </div>
+
+      <Footer />
     </main>
   );
 }

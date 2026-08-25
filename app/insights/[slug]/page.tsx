@@ -1,10 +1,13 @@
-﻿export const runtime = "nodejs";
+export const runtime = "nodejs";
 export const dynamicParams = true;
 
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
 import { getAllInsights, getInsightBySlug } from "@/lib/insights";
 import { renderMdx } from "@/lib/mdx";
+import { BOOKING_URL, SITE_URL } from "@/lib/site";
 
 async function unwrapParams<T>(p: T | Promise<T>): Promise<T> {
   return await Promise.resolve(p);
@@ -21,6 +24,7 @@ export async function generateMetadata({ params }: { params: any }) {
   if (!post) return {};
 
   return {
+    alternates: { canonical: `/insights/${post.slug}` },
     title: `${post.frontmatter.title} | EvidenSe`,
     description: post.frontmatter.description,
     openGraph: {
@@ -41,9 +45,7 @@ export default async function InsightPage({ params }: { params: any }) {
 
   const content = await renderMdx(post.content);
 
-  // JSON-LD (SEO + AIO)
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.evidense.io";
-  const canonicalUrl = `${baseUrl}/insights/${post.slug}`;
+  const canonicalUrl = `${SITE_URL}/insights/${post.slug}`;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -52,68 +54,66 @@ export default async function InsightPage({ params }: { params: any }) {
     description: post.frontmatter.description,
     datePublished: post.frontmatter.date,
     mainEntityOfPage: canonicalUrl,
-    author: { "@type": "Person", name: "Stéphane Schwander" },
-    publisher: { "@type": "Organization", name: "EvidenSe" },
+    author: {
+      "@type": "Person",
+      "@id": `${SITE_URL}/#stephane`,
+      name: "Stéphane Schwander",
+    },
+    publisher: {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: "EvidenSe",
+    },
   };
 
   return (
-    <main className="min-h-screen bg-[#000423] text-[#F8FAFC]">
+    <main className="relative min-h-screen selection:bg-[var(--color-moss)] selection:text-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className="mx-auto max-w-3xl px-6 py-20 sm:py-24">
-        {/* Kicker (match home) */}
-        <div className="text-xs tracking-[0.22em] uppercase text-[#F8FAFC]/70">
-          Decision Support • Strategic Mandates • Institutional Alignment
-        </div>
+      <Header />
 
-        {/* Back (discreet) */}
-        <div className="mt-6 text-xs tracking-[0.18em] uppercase text-[#F8FAFC]/70">
-          <Link href="/insights" className="hover:text-[#F8FAFC]">
-            ← Insights
-          </Link>
-        </div>
-
-        {/* Title block */}
-        <h1 className="mt-8 font-serif text-5xl leading-[1.05] tracking-tight sm:text-6xl">
-          {post.frontmatter.title}
-        </h1>
-
-        <p className="mt-5 text-base leading-relaxed text-[#F8FAFC]/80">
-          {post.frontmatter.description}
-        </p>
-
-        <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-[#F8FAFC]/70">
-          <time dateTime={post.frontmatter.date}>{post.frontmatter.date}</time>
-          <span className="text-[#F8FAFC]/30">/</span>
-          <span>EvidenSe</span>
-        </div>
-
-        {/* Primary CTA, consistent label */}
-        <div className="mt-8">
+      <div className="px-6 md:px-16 max-w-7xl mx-auto">
+        <div className="max-w-3xl pt-14 md:pt-20 pb-16 md:pb-20">
           <Link
-            href="/contact"
-            className="inline-flex items-center border border-[#F8FAFC] px-5 py-3 text-xs uppercase tracking-[0.18em] hover:bg-[#F8FAFC] hover:text-[#000423]"
+            href="/insights"
+            className="font-sans text-xs uppercase tracking-[0.15em] text-foreground/50 hover:text-foreground transition-colors"
           >
-            Start the conversation
+            &larr; The Briefing
           </Link>
-        </div>
 
-        <div className="mt-12 h-px w-full bg-[#F8FAFC]/15" />
+          <h1 className="mt-8 font-serif text-4xl md:text-5xl leading-[1.1] tracking-tight text-foreground">
+            {post.frontmatter.title}
+          </h1>
 
-        {/* Article content */}
-        <article className="prose prose-invert mt-12 max-w-none">
-          {content}
-        </article>
+          <div className="mt-6 flex flex-wrap items-center gap-x-3 font-sans text-xs uppercase tracking-[0.12em] text-foreground/50 pb-10 border-b border-[var(--color-slate)]/40">
+            <time dateTime={post.frontmatter.date}>{post.frontmatter.date}</time>
+            <span className="text-foreground/25">/</span>
+            <span>Stéphane Schwander</span>
+          </div>
 
-        <div className="mt-14 h-px w-full bg-[#F8FAFC]/15" />
+          <article className="article-prose font-sans mt-10">{content}</article>
 
-        <div className="mt-10 text-xs tracking-[0.22em] uppercase text-[#F8FAFC]/70">
-          EvidenSe — Lausanne / Switzerland
+          <div className="mt-16 pt-10 border-t border-[var(--color-slate)]/40">
+            <p className="font-sans text-lg font-light text-foreground/70 leading-relaxed mb-6 max-w-xl">
+              If a decision like this is coming to your board, start with a conversation. Thirty
+              minutes, no material required in advance.
+            </p>
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block font-sans text-sm font-semibold uppercase tracking-widest text-background bg-foreground px-7 py-3.5 hover:bg-foreground/85 transition-colors"
+            >
+              Book a call
+            </a>
+          </div>
         </div>
       </div>
+
+      <Footer />
     </main>
   );
 }

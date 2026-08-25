@@ -40,3 +40,65 @@ section[id] {
     scroll-behavior: auto;
   }
 }
+
+/* Article typography for The Briefing posts. The `prose` plugin is
+   not enabled in this Tailwind v4 setup, so the article styles are
+   defined here against the brand tokens. */
+.article-prose {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  font-weight: 300;
+  color: color-mix(in srgb, var(--foreground) 78%, transparent);
+}
+.article-prose p {
+  margin-bottom: 1.75rem;
+}
+.article-prose h2 {
+  font-family: var(--font-playfair), serif;
+  font-size: 1.75rem;
+  line-height: 1.25;
+  color: var(--foreground);
+  margin-top: 3.5rem;
+  margin-bottom: 1.25rem;
+}
+.article-prose h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+.article-prose strong {
+  color: var(--foreground);
+  font-weight: 600;
+}
+.article-prose em {
+  color: var(--foreground);
+}
+.article-prose ul,
+.article-prose ol {
+  margin: 0 0 1.75rem 1.25rem;
+  list-style: disc;
+}
+.article-prose li {
+  margin-bottom: 0.6rem;
+}
+.article-prose blockquote {
+  border-left: 2px solid var(--color-moss);
+  padding-left: 1.5rem;
+  margin: 2.5rem 0;
+  color: var(--foreground);
+}
+.article-prose a {
+  color: var(--foreground);
+  border-bottom: 1px solid color-mix(in srgb, var(--foreground) 40%, transparent);
+  transition: border-color 0.2s;
+}
+.article-prose a:hover {
+  border-color: var(--foreground);
+}
+.article-prose hr {
+  border: 0;
+  border-top: 1px solid color-mix(in srgb, var(--color-slate) 40%, transparent);
+  margin: 3rem 0;
+}
