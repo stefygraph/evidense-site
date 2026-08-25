@@ -11,12 +11,10 @@ export const metadata: Metadata = {
   alternates: { canonical: "/about" },
   title: "About Stéphane Schwander | EvidenSe",
   description:
-    "Twenty years inside sport's institutions: nine at UEFA, eleven at the FEI. Why EvidenSe exists, and how the work is done.",
+    "Twenty-five years across sport's institutions and start-ups: eight at UEFA, eleven at the FEI, an owned audience grown from 351,000 to 5.3 million. Why EvidenSe exists, and how the work is done.",
 };
 
-// TODO(Stéphane), required before launch (handover note, section 11):
-// 1. Exact UEFA years, first paragraph of The career.
-// 2. One hard number from the FEI period, in The FEI story.
+// Career facts, dates and figures confirmed by Stéphane, August 2026.
 
 const PRINCIPLES = [
   {
@@ -62,12 +60,23 @@ export default function AboutPage() {
             </h1>
             <div className="font-sans text-lg md:text-xl font-light text-foreground/70 leading-relaxed space-y-6">
               <p>
-                {/* TODO(Stéphane): add exact UEFA years. */}
-                Nine years at UEFA as Digital Operations Manager. Eleven years at the FEI, the
-                international federation for equestrian sport, as Head of Digital and then Head
-                of Content and Platform Management. Co-founder of WNG in 2002. More than two
-                decades of international experience across Olympic federations, European
-                football and start-ups.
+                Eight years at UEFA in Nyon, from 2006 to 2014, first as an application
+                specialist on UEFA.com, then as Digital Operations Manager: everything published
+                on the site, in twelve languages, across some 1,600 matches a season and around
+                sixty contributors in Europe, with a EUR 2.1 million budget.
+              </p>
+              <p>
+                Eleven years at the FEI, the international federation for equestrian sport:
+                Commercial Manager, Digital Partnerships from 2015 to 2017, Head of Digital from
+                2018 to 2024, then Head of Content and Platform Management until 2026, with a
+                team of fifteen across Lausanne, Germany and England and a CHF 2.5 million
+                budget.
+              </p>
+              <p>
+                Before that, founder of WNG, a web and new media agency in Lausanne started in
+                2001 and built to CHF 1.9 million in turnover with a team of nine. Vendor,
+                operator, executive: I have written the recommendation, executed it, and been
+                the one who had to defend it upstairs.
               </p>
             </div>
           </div>
@@ -86,12 +95,20 @@ export default function AboutPage() {
               not prove much else.
             </p>
             <p>
-              Over eleven years we turned the federation into its own media platform. We built the
-              digital operation, brought production and distribution in-house where it made
-              commercial sense, and created inventory on owned channels rather than renting
-              audience from broadcasters. Sponsors stopped buying exposure and started buying
-              positions in a platform the federation controlled.
-              {/* TODO(Stéphane): one hard number from this period goes here. Blocking. */}
+              Over eleven years we turned the federation into its own media platform. The owned
+              audience grew from 351,000 to 5.3 million. We founded the FEI Media House, a joint
+              venture with ClipMyHorse.TV, so that production was something we controlled rather
+              than access we had to request. And we built commercial inventory on those channels:
+              the media offer booked over CHF 1 million in its first ten months, with seven
+              partners each receiving a delivery report against their own name.
+            </p>
+            <p>
+              The proof came when the spending stopped. In my final year we cut paid media spend
+              by 78 percent, and the audience still grew by 7 percent. By then, 81 percent of our
+              video consumption ran through channels we owned, while the sport's mainstream
+              television coverage fell by a quarter to a half in a single cycle. Measured
+              independently for ASOIF, the operation performed in the first quartile of Olympic
+              international federations on owned channels.
             </p>
             <p>
               That work is the origin of the EvidenSe thesis. It proved that visibility and value
@@ -138,6 +155,12 @@ export default function AboutPage() {
               The two feed each other. Teaching forces the thesis to be explainable to someone
               with no stake in agreeing with it, and a founder's board asks harder questions
               about revenue than most congresses do.
+            </p>
+            <p>
+              The FEI work took Best Entertainment, Leisure and Travel Campaign at the Alliance
+              of Independent Agencies awards in London in 2022, for a campaign that used 30
+              percent fewer posts than its predecessor and reached 96 percent more people. I
+              trained in Leading Digital Business Transformation at IMD in Lausanne.
             </p>
           </div>
         </section>
