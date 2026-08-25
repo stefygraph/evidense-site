@@ -82,8 +82,12 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* The FEI story */}
-        <section className="py-16 border-t border-[var(--color-slate)]/40 grid md:grid-cols-[1fr_2fr] gap-10 md:gap-24 items-start">
+        {/* The FEI story. id="record" so the proof is directly
+            linkable in an introduction email: /about#record */}
+        <section
+          id="record"
+          className="py-16 border-t border-[var(--color-slate)]/40 grid md:grid-cols-[1fr_2fr] gap-10 md:gap-24 items-start"
+        >
           <h2 className="font-serif text-3xl md:text-4xl text-foreground leading-tight">
             The FEI years.
           </h2>
