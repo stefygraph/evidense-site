@@ -86,12 +86,13 @@ const structuredData = {
       worksFor: { "@id": `${SITE_URL}/#organization` },
       jobTitle: "Founder",
       description:
-        "Founder of EvidenSe. Eight years at UEFA (2006 to 2014, latterly Digital Operations Manager) and eleven at the FEI, the international federation for equestrian sport (Commercial Manager Digital Partnerships, Head of Digital, then Head of Content and Platform Management), where he grew the owned audience from 351,000 to 5.3 million. Founder of WNG in 2001. Adviser to PickEat.it, lecturer at Toulouse Business School and guest lecturer at the University of Lausanne.",
+        "Founder of EvidenSe. Eight years at UEFA (2006 to 2014, latterly Digital Operations Manager) and eleven at the FEI, the international federation for equestrian sport (Commercial Manager Digital Partnerships, Head of Digital, then Head of Content and Platform Management), where he grew the owned audience from 351,000 to 5.3 million. Founder of WNG in 2001. Adviser to PickEat.it, mentor in ThinkSport's TECH4SPORT Accelerator, member of the Sport Innovation Challenge Council, lecturer at Toulouse Business School and guest lecturer at the University of Lausanne.",
       award:
         "Best Entertainment, Leisure and Travel Campaign, Alliance of Independent Agencies, London 2022",
       knowsAbout: EXPERTISE,
       affiliation: [
         { "@type": "Organization", name: "PickEat.it", url: "https://pickeat.it" },
+        { "@type": "Organization", name: "ThinkSport", url: "https://thinksport.org" },
         { "@type": "EducationalOrganization", name: "Toulouse Business School" },
         {
           "@type": "EducationalOrganization",

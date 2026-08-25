@@ -144,7 +144,18 @@ export default function AboutPage() {
             <p>
               I lecture at Toulouse Business School, and have given guest lectures at the
               Institute of Sport Sciences of the University of Lausanne, invited by Professor
-              Markus Lang. I advise start-ups, currently as adviser to{" "}
+              Markus Lang. At{" "}
+              <a
+                href="https://thinksport.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-foreground border-b border-foreground/40 hover:border-foreground transition-colors"
+              >
+                ThinkSport
+              </a>
+              , the Lausanne-based international sport cluster, I mentor start-ups in the
+              TECH4SPORT Accelerator and sit on the Sport Innovation Challenge Council. I also
+              advise start-ups directly, currently as adviser to{" "}
               <a
                 href="https://pickeat.it"
                 target="_blank"

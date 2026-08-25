@@ -61,8 +61,8 @@ export default function Founder() {
 
           <div className="font-sans text-lg md:text-xl font-light text-foreground/70 leading-relaxed mt-10 space-y-6">
             <p>
-              Alongside the practice, I lecture at Toulouse Business School and advise start-ups,
-              currently as adviser to{" "}
+              Alongside the practice, I lecture at Toulouse Business School, mentor start-ups in
+              ThinkSport&apos;s TECH4SPORT Accelerator, and advise{" "}
               <a
                 href="https://pickeat.it"
                 target="_blank"
