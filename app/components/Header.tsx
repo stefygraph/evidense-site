@@ -15,6 +15,7 @@ const ANCHORS = [
   { label: "Approach", href: "/#approach" },
   { label: "Sprint", href: "/#sprint" },
   { label: "About", href: "/about" },
+  { label: "Index", href: "https://index.evidense.io", desktopOnly: true, external: true },
   { label: "Contact", href: "/#contact", desktopOnly: true },
 ];
 
@@ -49,17 +50,31 @@ export default function Header() {
         </Link>
 
         <div className="flex items-center gap-3 md:gap-7">
-          {ANCHORS.map((a) => (
-            <Link
-              key={a.label}
-              href={a.href}
-              className={`font-sans text-xs md:text-sm font-medium text-foreground/70 hover:text-foreground transition-colors tracking-wide ${
-                a.desktopOnly ? "hidden md:inline" : ""
-              }`}
-            >
-              {a.label}
-            </Link>
-          ))}
+          {ANCHORS.map((a) =>
+            a.external ? (
+              <a
+                key={a.label}
+                href={a.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`font-sans text-xs md:text-sm font-medium text-foreground/70 hover:text-foreground transition-colors tracking-wide ${
+                  a.desktopOnly ? "hidden md:inline" : ""
+                }`}
+              >
+                {a.label}
+              </a>
+            ) : (
+              <Link
+                key={a.label}
+                href={a.href}
+                className={`font-sans text-xs md:text-sm font-medium text-foreground/70 hover:text-foreground transition-colors tracking-wide ${
+                  a.desktopOnly ? "hidden md:inline" : ""
+                }`}
+              >
+                {a.label}
+              </Link>
+            )
+          )}
           <a
             href={BOOKING_URL}
             target="_blank"

@@ -77,6 +77,30 @@ export default function Briefing() {
           )}
         </form>
       </div>
+
+      <div className="mt-10 pt-8 border-t border-[var(--color-slate)]/20">
+        <div className="border border-[var(--color-moss)]/50 p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div>
+            <p className="font-sans text-xs font-semibold uppercase tracking-widest text-[var(--color-moss)] mb-2">
+              Free, monthly
+            </p>
+            <h3 className="font-serif text-xl md:text-2xl text-foreground mb-2">
+              EvidenSe Sport Attention Index
+            </h3>
+            <p className="font-sans text-sm text-foreground/60 font-light max-w-md">
+              A free monthly ranking of global attention across Olympic sport, federation by federation.
+            </p>
+          </div>
+          <a
+            href="https://index.evidense.io"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 inline-block font-sans text-sm font-semibold uppercase tracking-wide text-foreground border border-foreground/30 px-6 py-3 hover:bg-foreground hover:text-background transition-colors whitespace-nowrap"
+          >
+            See the ranking &rarr;
+          </a>
+        </div>
+      </div>
     </section>
   );
 }
