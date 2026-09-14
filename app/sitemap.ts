@@ -12,5 +12,9 @@ export default function sitemap() {
       url: `${baseUrl}/insights/${i.slug}`,
       lastModified: i.date,
     })),
+    // index.evidense.io is a separate static site (its own repo, no sitemap of
+    // its own), but it is an EvidenSe project and belongs in this sitemap so
+    // it is discoverable from the same root.
+    { url: "https://index.evidense.io/", lastModified: new Date() },
   ];
 }

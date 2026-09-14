@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/about" },
   title: "About Stéphane Schwander | EvidenSe",
   description:
-    "Twenty-five years across sport's institutions and start-ups: eight at UEFA, eleven at the FEI, an owned audience grown from 351,000 to 5.3 million. Why EvidenSe exists, and how the work is done.",
+    "Twenty-five years across sport's institutions and start-ups: nine at UEFA, eleven at the FEI, an owned audience grown from 351,000 to 5.3 million. Why EvidenSe exists, and how the work is done.",
 };
 
 // Career facts, dates and figures confirmed by Stéphane, August 2026.
@@ -60,7 +60,7 @@ export default function AboutPage() {
             </h1>
             <div className="font-sans text-lg md:text-xl font-light text-foreground/70 leading-relaxed space-y-6">
               <p>
-                Eight years at UEFA in Nyon, from 2006 to 2014, first as an application
+                Nine years at UEFA in Nyon, from 2005 to 2014, first as an application
                 specialist on UEFA.com, then as Digital Operations Manager: everything published
                 on the site, in twelve languages, across some 1,600 matches a season and around
                 sixty contributors in Europe, with a EUR 2.1 million budget.

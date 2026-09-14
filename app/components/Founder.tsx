@@ -34,7 +34,7 @@ export default function Founder() {
           </h2>
           <div className="font-sans text-lg md:text-xl font-light text-foreground/70 leading-relaxed space-y-6">
             <p>
-              Eight years at UEFA. Eleven at the FEI, the international federation for equestrian
+              Nine years at UEFA. Eleven at the FEI, the international federation for equestrian
               sport, latterly as Head of Digital and then Head of Content and Platform Management,
               where I built and ran one of the strongest digital operations in Olympic sport,
               turning the federation into its own media platform and growing its owned audience

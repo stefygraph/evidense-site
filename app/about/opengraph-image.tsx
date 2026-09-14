@@ -53,7 +53,7 @@ export default async function Image() {
             color: "rgb(95, 122, 108)",
           }}
         >
-          Eight years at UEFA. Eleven at the FEI. Based in Lausanne.
+          Nine years at UEFA. Eleven at the FEI. Based in Lausanne.
         </div>
       </div>
     ),
