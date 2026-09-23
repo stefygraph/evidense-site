@@ -13,7 +13,7 @@ import { BOOKING_URL } from "@/lib/site";
 // row must not overflow.
 const ANCHORS = [
   { label: "Approach", href: "/#approach" },
-  { label: "Sprint", href: "/#sprint" },
+  { label: "Sprint", href: "/#approach" },
   { label: "About", href: "/about" },
   { label: "Index", href: "https://index.evidense.io", desktopOnly: true, external: true },
   { label: "Contact", href: "/#contact", desktopOnly: true },

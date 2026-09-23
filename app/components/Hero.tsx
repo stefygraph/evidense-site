@@ -30,7 +30,7 @@ export default function Hero() {
           Book a 30 minute call
         </a>
         <a
-          href="#sprint"
+          href="#approach"
           className="font-sans text-sm font-medium text-foreground/80 border-b border-foreground/40 pb-1 hover:text-foreground hover:border-foreground transition-colors"
         >
           See how the sprint works
