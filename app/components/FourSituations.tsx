@@ -9,7 +9,7 @@ const SITUATIONS = [
   {
     title: "You are about to commit capital.",
     body: "A property, a team or a sporttech target needs a view on upside, risk and durability that an investment committee will accept.",
-    tag: "Investors, funds, acquirers",
+    tag: "Investors, funds, family offices, acquirers",
   },
   {
     title: "You are being asked to pay for exposure.",
