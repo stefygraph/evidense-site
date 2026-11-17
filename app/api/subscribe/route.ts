@@ -1,4 +1,7 @@
 import { NextResponse } from "next/server";
+import { createHash } from "crypto";
+import { track, flush } from "@amplitude/analytics-node";
+import "@/lib/amplitude";
 
 // Loops mailing lists. IDs come from Loops Settings -> Lists.
 // The site's forms pass a `list` key ("briefing" by default), never a
@@ -21,6 +24,16 @@ function corsHeaders(origin: string | null) {
     "Access-Control-Allow-Methods": "POST, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type",
   };
+}
+
+// Amplitude: one server-side event per real subscription. The route runs as
+// a serverless function, so the batch is flushed before the response returns.
+// user_id is a SHA-256 of the lower-cased email: stable per subscriber, and
+// no personal data leaves for Amplitude.
+async function trackBriefingSubscribed(email: string) {
+  const userId = createHash("sha256").update(email.trim().toLowerCase()).digest("hex");
+  track("briefing_subscribed", undefined, { user_id: userId });
+  await flush().promise;
 }
 
 export async function OPTIONS(request: Request) {
@@ -74,6 +87,7 @@ export async function POST(request: Request) {
 
       // The contact exists either way: show a success state rather
       // than an error for a repeat subscriber.
+      await trackBriefingSubscribed(email);
       return NextResponse.json({ success: true }, { status: 200, headers });
     }
 
@@ -85,6 +99,7 @@ export async function POST(request: Request) {
       );
     }
 
+    await trackBriefingSubscribed(email);
     return NextResponse.json({ success: true }, { status: 200, headers });
   } catch {
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500, headers });
