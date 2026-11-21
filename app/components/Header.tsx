@@ -10,12 +10,16 @@ import { BOOKING_URL } from "@/lib/site";
 // links smooth-scroll to stable section IDs. From /about (or any
 // other route) the same links resolve absolutely. On mobile the
 // Contact anchor is hidden: the CTA covers the same intent and the
-// row must not overflow.
-const ANCHORS = [
+// row must not overflow. Labs gathers the public experiments (the
+// Sport Attention Index, La Sponsoring Machine) behind one entry, so
+// new labs do not add items to the header.
+type Anchor = { label: string; href: string; desktopOnly?: boolean; external?: boolean };
+
+const ANCHORS: Anchor[] = [
   { label: "Approach", href: "/#approach" },
   { label: "Sprint", href: "/#approach" },
   { label: "About", href: "/about" },
-  { label: "Index", href: "https://index.evidense.io", desktopOnly: true, external: true },
+  { label: "Labs", href: "/labs", desktopOnly: true },
   { label: "Contact", href: "/#contact", desktopOnly: true },
 ];
 

@@ -13,4 +13,7 @@ export const FOUNDER_SAME_AS: string[] = [
   "https://www.linkedin.com/in/stephaneschwander/",
 ];
 
-export const ORG_SAME_AS: string[] = [];
+export const ORG_SAME_AS: string[] = [
+  "https://evidense.ch",
+  "https://www.linkedin.com/company/evidense-advisory",
+];
