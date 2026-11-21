@@ -1,7 +1,11 @@
-// Content for EvidenSe Labs: the hub page and La Sponsoring Machine in
+// Content for La Sponsoring Machine in
 // English, French and German. Source: "La Sponsoring Machine, texte
 // GEO/SEO pour evidense.io (FR + EN)", Stéphane Schwander, 21 November
 // 2026. The German version is a translation of that text.
+//
+// The tool itself runs on its own subdomain, sponsoring-machine.evidense.io
+// (behind a login). These pages on evidense.io are the public, indexable
+// presentation of it, in three languages.
 //
 // Inline links use a light markdown syntax, [label](href), rendered by
 // the page component. Internal links start with "/".
@@ -74,8 +78,8 @@ const en: SponsoringMachineContent = {
     { label: "For", value: "Amateur sports clubs, federations, municipalities" },
     { label: "Area", value: "French-speaking Switzerland first" },
     { label: "Price", value: "Free demo. Beta CHF 390 per season" },
-    { label: "Tool languages", value: "French and German" },
     { label: "Research partner", value: "University of Lausanne (UNIL)" },
+    { label: "Tool", value: "sponsoring-machine.evidense.io, in French and German" },
   ],
   cta: {
     primary: "Open La Sponsoring Machine",
@@ -171,8 +175,8 @@ const fr: SponsoringMachineContent = {
     { label: "Pour", value: "Clubs amateurs, fédérations, communes" },
     { label: "Territoire", value: "Suisse romande d'abord" },
     { label: "Prix", value: "Démo gratuite. Bêta CHF 390 par saison" },
-    { label: "Langues de l'outil", value: "Français et allemand" },
     { label: "Partenaire de recherche", value: "Université de Lausanne (UNIL)" },
+    { label: "Outil", value: "sponsoring-machine.evidense.io, en français et en allemand" },
   ],
   cta: {
     primary: "Accéder à la Sponsoring Machine",
@@ -268,8 +272,8 @@ const de: SponsoringMachineContent = {
     { label: "Für", value: "Amateurvereine, Verbände, Gemeinden" },
     { label: "Gebiet", value: "Zuerst die Westschweiz" },
     { label: "Preis", value: "Demo gratis. Beta CHF 390 pro Saison" },
-    { label: "Sprachen des Tools", value: "Französisch und Deutsch" },
     { label: "Forschungspartner", value: "Universität Lausanne (UNIL)" },
+    { label: "Tool", value: "sponsoring-machine.evidense.io, auf Französisch und Deutsch" },
   ],
   cta: {
     primary: "Zur Sponsoring Machine",

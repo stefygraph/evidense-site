@@ -8,6 +8,6 @@ export default function Image() {
   return renderOgImage({
     kicker: "EvidenSe Labs",
     title: "The method, tested in public.",
-    footer: "Sport Attention Index · La Sponsoring Machine",
+    footer: "La Sponsoring Machine · sponsoring-machine.evidense.io",
   });
 }

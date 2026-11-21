@@ -25,19 +25,23 @@ Stéphane Schwander spent eight years at UEFA (2006 to 2014), first as an applic
 
 The differentiator: consultants have the models but have never carried a decision through a congress. Federation insiders have the credibility but not the modelling. EvidenSe works in the overlap.
 
+## EvidenSe Sport Attention Index
+
+https://index.evidense.io, its own subdomain: a monthly ranking of public attention across the international federations of the Olympic programme, built from open signals such as Wikipedia readership and search interest, published on the 3rd of each month.
+
 ## EvidenSe Labs
 
-Public experiments that test the EvidenSe method in the open. Each starts from one commercial question, is measured against real data, and stays a working experiment rather than a platform.
+Public experiments that test the EvidenSe method in the open (https://www.evidense.io/labs). Each starts from one commercial question, is measured against real data, and stays a working experiment rather than a platform. Each lab's tool runs on its own subdomain; its presentation page lives on www.evidense.io.
 
-- EvidenSe Sport Attention Index (https://index.evidense.io): a monthly ranking of public attention across the international federations of the Olympic programme, built from open signals such as Wikipedia readership and search interest, published on the 3rd of each month.
-- La Sponsoring Machine (https://www.evidense.io/labs/sponsoring-machine, French: https://www.evidense.io/fr/labs/sponsoring-machine, German: https://www.evidense.io/de/labs/sponsoring-machine): an EvidenSe service that helps amateur sports clubs in French-speaking Switzerland value, structure and sell their sponsorship. In about twenty minutes a club gets an estimate of its sponsorship value (a plausibility range), the gap with what it collects today, three offer tiers and a personalised sponsorship brochure. In the beta (CHF 390 per season), EvidenSe also delivers ten relevant local companies identified from public sources (company websites, the Swiss commercial register Zefix), with the contact person the company publishes and ready-to-send messages the club sends from its own mailbox. The demo is free. The valuation model was tested in 2026 against the real sponsorship income of six clubs in French-speaking Switzerland; two clubs joined the beta. Run with Jessy Ducommun (University of Lausanne, master's thesis; sponsorship manager of LUC Floorball Epalinges) and presented to club committees in the Club Management course at Swiss Olympic's Maison du Sport in Ittigen. Tool available in French and German: https://sponsoring-machine.evidense.io
+- La Sponsoring Machine. Tool: https://sponsoring-machine.evidense.io (behind a login, in French and German). Presentation: https://www.evidense.io/labs/sponsoring-machine (French: https://www.evidense.io/fr/labs/sponsoring-machine, German: https://www.evidense.io/de/labs/sponsoring-machine). An EvidenSe service that helps amateur sports clubs in French-speaking Switzerland value, structure and sell their sponsorship. In about twenty minutes a club gets an estimate of its sponsorship value (a plausibility range), the gap with what it collects today, three offer tiers and a personalised sponsorship brochure. In the beta (CHF 390 per season), EvidenSe also delivers ten relevant local companies identified from public sources (company websites, the Swiss commercial register Zefix), with the contact person the company publishes and ready-to-send messages the club sends from its own mailbox. The demo is free. The valuation model was tested in 2026 against the real sponsorship income of six clubs in French-speaking Switzerland; two clubs joined the beta. Run with Jessy Ducommun (University of Lausanne, master's thesis; sponsorship manager of LUC Floorball Epalinges) and presented to club committees in the Club Management course at Swiss Olympic's Maison du Sport in Ittigen.
 
 ## Pages
 
 - [Home](https://www.evidense.io/): the offer, the Decision Sprint, the four client situations
 - [About Stéphane Schwander](https://www.evidense.io/about): career, the FEI story, working principles
 - [The Briefing](https://www.evidense.io/insights): notes for people who decide
-- [EvidenSe Labs](https://www.evidense.io/labs): the Sport Attention Index and La Sponsoring Machine
+- [EvidenSe Sport Attention Index](https://index.evidense.io): monthly attention ranking of Olympic international federations
+- [EvidenSe Labs](https://www.evidense.io/labs): public experiments, currently La Sponsoring Machine
 - [La Sponsoring Machine](https://www.evidense.io/labs/sponsoring-machine): sponsorship for amateur sports clubs in Switzerland (also in [French](https://www.evidense.io/fr/labs/sponsoring-machine) and [German](https://www.evidense.io/de/labs/sponsoring-machine))
 
 ## Contact

@@ -37,14 +37,14 @@ export default function Footer() {
       <div className="mt-6 pt-6 border-t border-[var(--color-slate)]/40 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 text-sm font-sans font-light text-foreground/70">
         <p>
           <span className="text-foreground uppercase tracking-widest text-xs font-bold mr-3">EvidenSe Labs</span>
-          <a href="https://index.evidense.io" className="hover:text-foreground transition-colors">Sport Attention Index</a>
-          <span className="mx-2 text-foreground/30">/</span>
           <Link href="/labs/sponsoring-machine" className="hover:text-foreground transition-colors">La Sponsoring Machine</Link>
           <span className="ml-2 text-foreground/50">
             (<Link href="/fr/labs/sponsoring-machine" hrefLang="fr-CH" className="hover:text-foreground transition-colors">FR</Link>
             {" "}·{" "}
             <Link href="/de/labs/sponsoring-machine" hrefLang="de-CH" className="hover:text-foreground transition-colors">DE</Link>)
           </span>
+          <span className="mx-2 text-foreground/30">/</span>
+          <a href="https://sponsoring-machine.evidense.io" className="hover:text-foreground transition-colors">sponsoring-machine.evidense.io</a>
         </p>
         <Link href="/labs" className="shrink-0 hover:text-foreground transition-colors underline underline-offset-4">
           All labs

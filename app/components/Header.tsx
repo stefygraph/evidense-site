@@ -10,17 +10,27 @@ import { BOOKING_URL } from "@/lib/site";
 // links smooth-scroll to stable section IDs. From /about (or any
 // other route) the same links resolve absolutely. On mobile the
 // Contact anchor is hidden: the CTA covers the same intent and the
-// row must not overflow. Labs gathers the public experiments (the
-// Sport Attention Index, La Sponsoring Machine) behind one entry, so
-// new labs do not add items to the header.
-type Anchor = { label: string; href: string; desktopOnly?: boolean; external?: boolean };
+// row must not overflow. The Index keeps its own entry (it lives on
+// index.evidense.io); Labs gathers the other public experiments, such as
+// La Sponsoring Machine (sponsoring-machine.evidense.io), behind one
+// entry so new labs do not add items to the header.
+type Anchor = {
+  label: string;
+  href: string;
+  desktopOnly?: boolean;
+  wideOnly?: boolean;
+  external?: boolean;
+};
 
 const ANCHORS: Anchor[] = [
   { label: "Approach", href: "/#approach" },
   { label: "Sprint", href: "/#approach" },
   { label: "About", href: "/about" },
+  { label: "Index", href: "https://index.evidense.io", desktopOnly: true, external: true },
   { label: "Labs", href: "/labs", desktopOnly: true },
-  { label: "Contact", href: "/#contact", desktopOnly: true },
+  // Contact only from 1024px: at tablet width six links plus the CTA
+  // overflow, and the CTA covers the same intent.
+  { label: "Contact", href: "/#contact", wideOnly: true },
 ];
 
 export default function Header() {
@@ -62,7 +72,7 @@ export default function Header() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`font-sans text-xs md:text-sm font-medium text-foreground/70 hover:text-foreground transition-colors tracking-wide ${
-                  a.desktopOnly ? "hidden md:inline" : ""
+                  a.wideOnly ? "hidden lg:inline" : a.desktopOnly ? "hidden md:inline" : ""
                 }`}
               >
                 {a.label}
@@ -72,7 +82,7 @@ export default function Header() {
                 key={a.label}
                 href={a.href}
                 className={`font-sans text-xs md:text-sm font-medium text-foreground/70 hover:text-foreground transition-colors tracking-wide ${
-                  a.desktopOnly ? "hidden md:inline" : ""
+                  a.wideOnly ? "hidden lg:inline" : a.desktopOnly ? "hidden md:inline" : ""
                 }`}
               >
                 {a.label}
