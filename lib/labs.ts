@@ -66,19 +66,19 @@ const en: SponsoringMachineContent = {
   ogLocale: "en_GB",
   title: "La Sponsoring Machine: sponsorship for amateur clubs",
   description:
-    "EvidenSe helps amateur sports clubs in French-speaking Switzerland value their sponsorship, structure their offer and find local sponsors. Free demo.",
+    "EvidenSe helps amateur sports clubs in Switzerland value their sponsorship, structure their offer and find local sponsors. Free demo.",
   breadcrumbLabs: "Labs",
   eyebrow: "EvidenSe Labs · La Sponsoring Machine",
   h1: "Helping amateur sports clubs become sponsorable.",
   lead: [
-    "La Sponsoring Machine is an EvidenSe service that helps amateur sports clubs in French-speaking Switzerland value, structure and sell their sponsorship. It turns what a club already has (members, families, local presence, digital audience, events) into an offer a local business can read and act on.",
+    "La Sponsoring Machine is an EvidenSe service that helps amateur sports clubs in Switzerland value, structure and sell their sponsorship. It turns what a club already has (members, families, local presence, digital audience, events) into an offer a local business can read and act on.",
   ],
   facts: [
     { label: "Provided by", value: "EvidenSe, Lausanne" },
     { label: "For", value: "Amateur sports clubs, federations, municipalities" },
-    { label: "Area", value: "French-speaking Switzerland first" },
-    { label: "Price", value: "Free demo. Beta CHF 390 per season" },
-    { label: "Research partner", value: "University of Lausanne (UNIL)" },
+    { label: "Area", value: "Switzerland" },
+    { label: "Getting started", value: "Free demo, beta on request" },
+    { label: "Field research", value: "Jessy Ducommun, master's thesis at UNIL" },
     { label: "Tool", value: "sponsoring-machine.evidense.io, in French and German" },
   ],
   cta: {
@@ -115,14 +115,14 @@ const en: SponsoringMachineContent = {
     {
       heading: "The ambition",
       body: [
-        "To prove, club by club, that a professional sponsorship proposal changes how much an amateur club collects. French-speaking Switzerland is the starting ground; the ambition is to serve every amateur club in Switzerland, in French, German and Italian.",
-        "If three clubs pay for the beta (CHF 390 per season) by the end of 2026, the service extends to cantonal and national federations, sports associations and municipalities that want to equip their clubs. If not, the project becomes an EvidenSe case study on the economics of grassroots sport in Switzerland.",
+        "To prove, club by club, that a professional sponsorship proposal changes how much an amateur club collects, for every amateur club in Switzerland, in French, German and Italian.",
+        "The service is also built for cantonal and national federations, sports associations and municipalities that want to equip their clubs.",
       ],
     },
     {
       heading: "Who it is for",
       body: [
-        "Committees of amateur clubs (football, floorball, athletics, handball, judo, outdoor sports), cantonal federations, sports associations and municipalities in French-speaking Switzerland.",
+        "Committees of amateur clubs (football, floorball, athletics, handball, judo, outdoor sports), cantonal federations, sports associations and municipalities across Switzerland.",
       ],
     },
   ],
@@ -133,8 +133,8 @@ const en: SponsoringMachineContent = {
       a: "An EvidenSe service that estimates the sponsorship value of a Swiss amateur club, structures its offer and identifies relevant local sponsors.",
     },
     {
-      q: "How much does it cost?",
-      a: "The demo (estimate, gap, three offers, brochure) is free. The beta costs CHF 390 per season and includes ten named companies with a contact person, ready-to-send messages, two follow-up calls and an updated brochure.",
+      q: "How do I get started?",
+      a: "With the free demo: an estimate, the gap, three offers and a brochure. The beta adds ten named companies with a contact person, ready-to-send messages, two follow-up calls and an updated brochure; to join it, write to hello@evidense.io.",
     },
     {
       q: "Is it a matchmaking platform?",
@@ -146,7 +146,7 @@ const en: SponsoringMachineContent = {
     },
     {
       q: "Who is behind the project?",
-      a: "[Stéphane Schwander](/about), founder of [EvidenSe](/) (strategic advisory for sport, Lausanne), with [Jessy Ducommun](https://www.linkedin.com/in/jessy-ducommun/) (UNIL, sponsorship manager of [LUC Floorball Epalinges](https://www.lucfloorballepalinges.ch/)).",
+      a: "[Stéphane Schwander](/about), founder of [EvidenSe](/) (strategic advisory for sport, Lausanne), with [Jessy Ducommun](https://www.linkedin.com/in/jessy-ducommun/) (master's student at UNIL, sponsorship manager of [LUC Floorball Epalinges](https://www.lucfloorballepalinges.ch/)).",
     },
   ],
   closing: "A club committee, a federation or a municipality that wants to equip its clubs? Start with the free demo.",
@@ -163,19 +163,19 @@ const fr: SponsoringMachineContent = {
   ogLocale: "fr_CH",
   title: "La Sponsoring Machine : sponsoring pour clubs amateurs",
   description:
-    "EvidenSe aide les clubs sportifs amateurs romands à chiffrer leur valeur de sponsoring, structurer leur offre et trouver des sponsors locaux. Démo gratuite.",
+    "EvidenSe aide les clubs sportifs amateurs suisses à chiffrer leur valeur de sponsoring, structurer leur offre et trouver des sponsors locaux. Démo gratuite.",
   breadcrumbLabs: "Labs",
   eyebrow: "EvidenSe Labs · La Sponsoring Machine",
   h1: "Aider les clubs amateurs à devenir sponsorisables.",
   lead: [
-    "La Sponsoring Machine est un service d'EvidenSe qui aide les clubs sportifs amateurs de Suisse romande à chiffrer, structurer et vendre leur sponsoring. Elle transforme ce qu'un club possède déjà (membres, familles, présence locale, audience numérique, événements) en une offre lisible pour une entreprise de la région.",
+    "La Sponsoring Machine est un service d'EvidenSe qui aide les clubs sportifs amateurs de Suisse à chiffrer, structurer et vendre leur sponsoring. Elle transforme ce qu'un club possède déjà (membres, familles, présence locale, audience numérique, événements) en une offre lisible pour une entreprise de la région.",
   ],
   facts: [
     { label: "Proposé par", value: "EvidenSe, Lausanne" },
     { label: "Pour", value: "Clubs amateurs, fédérations, communes" },
-    { label: "Territoire", value: "Suisse romande d'abord" },
-    { label: "Prix", value: "Démo gratuite. Bêta CHF 390 par saison" },
-    { label: "Partenaire de recherche", value: "Université de Lausanne (UNIL)" },
+    { label: "Territoire", value: "Toute la Suisse" },
+    { label: "Pour commencer", value: "Démo gratuite, bêta sur demande" },
+    { label: "Recherche terrain", value: "Jessy Ducommun, travail de master à l'UNIL" },
     { label: "Outil", value: "sponsoring-machine.evidense.io, en français et en allemand" },
   ],
   cta: {
@@ -212,14 +212,14 @@ const fr: SponsoringMachineContent = {
     {
       heading: "L'ambition",
       body: [
-        "Prouver, club par club, qu'un dossier de sponsoring professionnel change le montant encaissé par un club amateur. La Suisse romande est le terrain de départ ; l'ambition est de servir tous les clubs amateurs de Suisse, en français, en allemand et en italien.",
-        "Si trois clubs paient la bêta (CHF 390 par saison) d'ici fin 2026, le service s'étend aux fédérations cantonales et nationales, aux associations et aux communes qui veulent outiller leurs clubs. Sinon, le projet devient une étude de cas EvidenSe sur l'économie du sport amateur en Suisse.",
+        "Prouver, club par club, qu'un dossier de sponsoring professionnel change le montant encaissé par un club amateur, pour tous les clubs amateurs de Suisse, en français, en allemand et en italien.",
+        "Le service s'adresse aussi aux fédérations cantonales et nationales, aux associations et aux communes qui veulent outiller leurs clubs.",
       ],
     },
     {
       heading: "Pour qui",
       body: [
-        "Comités de clubs amateurs (football, unihockey, athlétisme, handball, judo, sports outdoor), fédérations cantonales, associations sportives et communes de Suisse romande.",
+        "Comités de clubs amateurs (football, unihockey, athlétisme, handball, judo, sports outdoor), fédérations cantonales, associations sportives et communes de toute la Suisse.",
       ],
     },
   ],
@@ -230,8 +230,8 @@ const fr: SponsoringMachineContent = {
       a: "Un service EvidenSe qui estime la valeur de sponsoring d'un club amateur suisse, structure son offre et identifie des sponsors locaux pertinents.",
     },
     {
-      q: "Combien coûte le service ?",
-      a: "La démo (estimation, écart, trois offres, plaquette) est gratuite. La bêta coûte CHF 390 par saison et comprend dix entreprises nommées avec interlocuteur, les messages prêts, deux points de suivi et la plaquette mise à jour.",
+      q: "Comment démarrer ?",
+      a: "Avec la démo gratuite : estimation, écart, trois offres et plaquette. La bêta ajoute dix entreprises nommées avec interlocuteur, les messages prêts, deux points de suivi et la plaquette mise à jour ; pour la rejoindre, écrivez à hello@evidense.io.",
     },
     {
       q: "Est-ce une plateforme de mise en relation ?",
@@ -243,7 +243,7 @@ const fr: SponsoringMachineContent = {
     },
     {
       q: "Qui est derrière le projet ?",
-      a: "[Stéphane Schwander](/about), fondateur d'[EvidenSe](/) (conseil stratégique pour le sport, Lausanne), avec [Jessy Ducommun](https://www.linkedin.com/in/jessy-ducommun/) (UNIL, sponsoring manager du [LUC Floorball Epalinges](https://www.lucfloorballepalinges.ch/)).",
+      a: "[Stéphane Schwander](/about), fondateur d'[EvidenSe](/) (conseil stratégique pour le sport, Lausanne), avec [Jessy Ducommun](https://www.linkedin.com/in/jessy-ducommun/) (étudiant en master à l'UNIL, sponsoring manager du [LUC Floorball Epalinges](https://www.lucfloorballepalinges.ch/)).",
     },
   ],
   closing: "Un comité de club, une fédération ou une commune qui veut outiller ses clubs ? Commencez par la démo gratuite.",
@@ -260,19 +260,19 @@ const de: SponsoringMachineContent = {
   ogLocale: "de_CH",
   title: "La Sponsoring Machine: Sponsoring für Amateurvereine",
   description:
-    "EvidenSe hilft Amateurvereinen, ihren Sponsoringwert zu beziffern, ihr Angebot zu strukturieren und lokale Sponsoren in der Schweiz zu finden. Gratis-Demo.",
+    "EvidenSe hilft Schweizer Amateurvereinen, ihren Sponsoringwert zu beziffern, ihr Angebot zu strukturieren und lokale Sponsoren zu finden. Gratis-Demo.",
   breadcrumbLabs: "Labs",
   eyebrow: "EvidenSe Labs · La Sponsoring Machine",
   h1: "Amateursportvereine sponsorfähig machen.",
   lead: [
-    "La Sponsoring Machine ist ein Angebot von EvidenSe, das Amateursportvereinen in der Westschweiz hilft, ihr Sponsoring zu beziffern, zu strukturieren und zu verkaufen. Sie macht aus dem, was ein Verein bereits hat (Mitglieder, Familien, lokale Verankerung, digitale Reichweite, Anlässe), ein Angebot, das ein Unternehmen aus der Region versteht und umsetzen kann.",
+    "La Sponsoring Machine ist ein Angebot von EvidenSe, das Amateursportvereinen in der ganzen Schweiz hilft, ihr Sponsoring zu beziffern, zu strukturieren und zu verkaufen. Sie macht aus dem, was ein Verein bereits hat (Mitglieder, Familien, lokale Verankerung, digitale Reichweite, Anlässe), ein Angebot, das ein Unternehmen aus der Region versteht und umsetzen kann.",
   ],
   facts: [
     { label: "Angeboten von", value: "EvidenSe, Lausanne" },
     { label: "Für", value: "Amateurvereine, Verbände, Gemeinden" },
-    { label: "Gebiet", value: "Zuerst die Westschweiz" },
-    { label: "Preis", value: "Demo gratis. Beta CHF 390 pro Saison" },
-    { label: "Forschungspartner", value: "Universität Lausanne (UNIL)" },
+    { label: "Gebiet", value: "Ganze Schweiz" },
+    { label: "Einstieg", value: "Demo gratis, Beta auf Anfrage" },
+    { label: "Feldforschung", value: "Jessy Ducommun, Masterarbeit an der UNIL" },
     { label: "Tool", value: "sponsoring-machine.evidense.io, auf Französisch und Deutsch" },
   ],
   cta: {
@@ -309,14 +309,14 @@ const de: SponsoringMachineContent = {
     {
       heading: "Das Ziel",
       body: [
-        "Verein für Verein zu beweisen, dass ein professionelles Sponsoringdossier verändert, wie viel ein Amateurverein einnimmt. Die Westschweiz ist der Ausgangspunkt; das Ziel ist, allen Amateurvereinen der Schweiz zu dienen, auf Französisch, Deutsch und Italienisch.",
-        "Wenn bis Ende 2026 drei Vereine für die Beta bezahlen (CHF 390 pro Saison), wird das Angebot auf kantonale und nationale Verbände, Sportvereinigungen und Gemeinden ausgeweitet, die ihre Vereine ausrüsten wollen. Andernfalls wird das Projekt zu einer Fallstudie von EvidenSe über die Ökonomie des Amateursports in der Schweiz.",
+        "Verein für Verein zu beweisen, dass ein professionelles Sponsoringdossier verändert, wie viel ein Amateurverein einnimmt, für alle Amateurvereine der Schweiz, auf Französisch, Deutsch und Italienisch.",
+        "Das Angebot richtet sich auch an kantonale und nationale Verbände, Sportvereinigungen und Gemeinden, die ihre Vereine ausrüsten wollen.",
       ],
     },
     {
       heading: "Für wen",
       body: [
-        "Vorstände von Amateurvereinen (Fussball, Unihockey, Leichtathletik, Handball, Judo, Outdoor-Sport), kantonale Verbände, Sportvereinigungen und Gemeinden, zuerst in der Westschweiz.",
+        "Vorstände von Amateurvereinen (Fussball, Unihockey, Leichtathletik, Handball, Judo, Outdoor-Sport), kantonale Verbände, Sportvereinigungen und Gemeinden in der ganzen Schweiz.",
       ],
     },
   ],
@@ -327,8 +327,8 @@ const de: SponsoringMachineContent = {
       a: "Ein Angebot von EvidenSe, das den Sponsoringwert eines Schweizer Amateurvereins schätzt, sein Angebot strukturiert und passende lokale Sponsoren findet.",
     },
     {
-      q: "Was kostet das Angebot?",
-      a: "Die Demo (Schätzung, Lücke, drei Angebote, Broschüre) ist gratis. Die Beta kostet CHF 390 pro Saison und umfasst zehn namentlich genannte Unternehmen mit Ansprechperson, versandbereite Nachrichten, zwei Follow-up-Gespräche und eine aktualisierte Broschüre.",
+      q: "Wie fange ich an?",
+      a: "Mit der Gratis-Demo: Schätzung, Lücke, drei Angebote und Broschüre. Die Beta ergänzt zehn namentlich genannte Unternehmen mit Ansprechperson, versandbereite Nachrichten, zwei Follow-up-Gespräche und eine aktualisierte Broschüre; für die Teilnahme schreiben Sie an hello@evidense.io.",
     },
     {
       q: "Ist es eine Vermittlungsplattform?",
@@ -340,7 +340,7 @@ const de: SponsoringMachineContent = {
     },
     {
       q: "Wer steht hinter dem Projekt?",
-      a: "[Stéphane Schwander](/about), Gründer von [EvidenSe](/) (Strategieberatung für den Sport, Lausanne), mit [Jessy Ducommun](https://www.linkedin.com/in/jessy-ducommun/) (UNIL, Sponsoring-Verantwortlicher von [LUC Floorball Epalinges](https://www.lucfloorballepalinges.ch/)).",
+      a: "[Stéphane Schwander](/about), Gründer von [EvidenSe](/) (Strategieberatung für den Sport, Lausanne), mit [Jessy Ducommun](https://www.linkedin.com/in/jessy-ducommun/) (Masterstudent an der UNIL, Sponsoring-Verantwortlicher von [LUC Floorball Epalinges](https://www.lucfloorballepalinges.ch/)).",
     },
   ],
   closing: "Ein Vereinsvorstand, ein Verband oder eine Gemeinde, die ihre Vereine ausrüsten will? Beginnen Sie mit der Gratis-Demo.",

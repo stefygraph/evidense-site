@@ -42,9 +42,9 @@ type Lab = {
 const LABS: Lab[] = [
   {
     name: "La Sponsoring Machine",
-    status: "Beta · French-speaking Switzerland",
+    status: "Beta · Switzerland",
     question: "How much sponsorship is an amateur club leaving on the table?",
-    body: "Helps amateur sports clubs in French-speaking Switzerland value, structure and sell their sponsorship: an estimate of what the club is worth to a local sponsor, three offer tiers and a brochure, then ten relevant local companies to approach. Run with the University of Lausanne.",
+    body: "Helps amateur sports clubs in Switzerland value, structure and sell their sponsorship: an estimate of what the club is worth to a local sponsor, three offer tiers and a brochure, then ten relevant local companies to approach. Field research by Jessy Ducommun, as part of his master's thesis at the University of Lausanne.",
     page: SPONSORING_MACHINE_PATHS.en,
     toolUrl: SPONSORING_MACHINE_TOOL_URL,
     toolLabel: "sponsoring-machine.evidense.io",

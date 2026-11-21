@@ -121,24 +121,12 @@ function jsonLd(locale: LabsLocale) {
         description: c.serviceDescription,
         serviceType: c.serviceType,
         provider: { "@id": `${SITE_URL}/#organization` },
-        areaServed: [
-          { "@type": "AdministrativeArea", name: "Romandie (French-speaking Switzerland)" },
-          { "@type": "Country", name: "Switzerland" },
-        ],
+        areaServed: { "@type": "Country", name: "Switzerland" },
         audience: { "@type": "Audience", audienceType: c.audience },
         availableLanguage: ["fr", "de"],
         inLanguage: c.htmlLang,
-        offers: [
-          { "@type": "Offer", name: "Demo", price: "0", priceCurrency: "CHF" },
-          {
-            "@type": "Offer",
-            name: "Beta",
-            price: "390",
-            priceCurrency: "CHF",
-            description:
-              "Per season: ten named local companies with a contact person, ready-to-send messages, two follow-up calls, updated brochure",
-          },
-        ],
+        // No prices published yet: only the free demo is declared.
+        offers: { "@type": "Offer", name: "Demo", price: "0", priceCurrency: "CHF" },
         contributor: { "@id": jessyId },
       },
       {
