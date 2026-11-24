@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Footer from "../components/Footer";
@@ -176,6 +177,26 @@ export default function AboutPage() {
               of Independent Agencies awards in London in 2022, for a campaign that used 30
               percent fewer posts than its predecessor and reached 96 percent more people. I
               trained in Leading Digital Business Transformation at IMD in Lausanne.
+            </p>
+            <p>
+              Lausanne is also where I was born and where I work. I wrote about why so much of
+              international sport is run from here, and what the region could still build from it,
+              in{" "}
+              <Link
+                href="/insights/lausanne-vaud-international-sport"
+                className="text-foreground border-b border-foreground/40 hover:border-foreground transition-colors"
+              >
+                Lausanne and Vaud: why international sport lives here
+              </Link>{" "}
+              (
+              <Link
+                href="/fr/insights/lausanne-vaud-sport-international"
+                hrefLang="fr-CH"
+                className="text-foreground border-b border-foreground/40 hover:border-foreground transition-colors"
+              >
+                en français
+              </Link>
+              ).
             </p>
           </div>
         </section>

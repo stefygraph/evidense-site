@@ -102,3 +102,79 @@ section[id] {
   border-top: 1px solid color-mix(in srgb, var(--color-slate) 40%, transparent);
   margin: 3rem 0;
 }
+
+/* Long-form article (Lausanne and Vaud). Direct-child selectors only,
+   so the structured blocks rendered inside the body (tables, figures,
+   CTAs) keep their own styles. Measure about 68 characters, regular
+   weight for long reading on the dark ground. */
+.lv-prose {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: color-mix(in srgb, var(--foreground) 82%, transparent);
+}
+@media (min-width: 768px) {
+  .lv-prose {
+    font-size: 1.125rem;
+    line-height: 1.8;
+  }
+}
+.lv-prose > p {
+  margin: 0 0 1.5rem;
+}
+.lv-prose > h2 {
+  font-family: var(--font-playfair), serif;
+  font-size: 1.625rem;
+  line-height: 1.25;
+  color: var(--foreground);
+  margin: 3.5rem 0 1.25rem;
+  scroll-margin-top: 6rem;
+  text-wrap: balance;
+}
+@media (min-width: 768px) {
+  .lv-prose > h2 {
+    font-size: 2rem;
+    margin-top: 4.5rem;
+  }
+}
+.lv-prose > ul {
+  margin: 0 0 1.75rem;
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+.lv-prose > ul > li {
+  margin-bottom: 0.5rem;
+  padding-left: 0.25rem;
+}
+.lv-prose > ul > li::marker {
+  color: var(--color-moss);
+}
+.lv-prose strong {
+  color: var(--foreground);
+  font-weight: 600;
+}
+.lv-prose > p a {
+  color: var(--foreground);
+  text-decoration: underline;
+  text-decoration-color: var(--color-moss);
+  text-underline-offset: 4px;
+}
+.lv-ref {
+  font-size: 0.68em;
+  line-height: 0;
+  margin-left: 0.15em;
+  font-weight: 500;
+}
+.lv-ref a {
+  color: var(--color-moss);
+  text-decoration: none;
+  padding: 0 0.1em;
+}
+.lv-ref a:hover {
+  color: var(--foreground);
+}
+.lv-source:target {
+  background: color-mix(in srgb, var(--color-moss) 18%, transparent);
+}
+.lv-source {
+  scroll-margin-top: 6rem;
+}

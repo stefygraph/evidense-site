@@ -18,7 +18,17 @@ export default function Footer() {
           </div>
           <div className="space-y-0.5">
             <p className="text-foreground uppercase tracking-widest text-xs font-bold">EvidenSe</p>
-            <p>Based in Lausanne. Working internationally.</p>
+            <p>
+              Based in{" "}
+              <Link
+                href="/insights/lausanne-vaud-international-sport"
+                title="Lausanne and Vaud: why international sport lives here"
+                className="underline decoration-foreground/25 underline-offset-4 hover:text-foreground hover:decoration-foreground transition-colors"
+              >
+                Lausanne
+              </Link>
+              . Working internationally.
+            </p>
           </div>
         </div>
         <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-foreground transition-colors">

@@ -2,6 +2,7 @@ import Link from "next/link";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { getAllInsights } from "@/lib/insights";
+import { LAUSANNE_VAUD, LAUSANNE_VAUD_PATHS, LAUSANNE_VAUD_PUBLISHED } from "@/lib/articles/lausanne-vaud";
 
 export const metadata = {
   alternates: { canonical: "/insights" },
@@ -25,6 +26,41 @@ export default function InsightsPage() {
           <p className="font-sans text-lg md:text-xl font-light text-foreground/70 leading-relaxed">
             Notes for people who decide. Rare, never noise.
           </p>
+
+          {/* Featured long read, in English and French */}
+          <article className="mt-14 border border-[var(--color-moss)]/60 bg-[var(--color-moss)]/10 p-6 md:p-8">
+            <div className="flex flex-wrap items-center gap-x-3 font-sans text-xs uppercase tracking-[0.12em] text-foreground/50">
+              <span className="text-[var(--color-moss)] font-semibold">Long read</span>
+              <span className="text-foreground/25">/</span>
+              <time dateTime={LAUSANNE_VAUD_PUBLISHED}>{LAUSANNE_VAUD_PUBLISHED}</time>
+              <span className="text-foreground/25">/</span>
+              <span>EN · FR</span>
+            </div>
+            <h2 className="mt-4 font-serif text-2xl md:text-3xl leading-snug tracking-tight text-foreground">
+              <Link href={LAUSANNE_VAUD_PATHS.en} className="hover:text-foreground/80 transition-colors">
+                {LAUSANNE_VAUD.en.h1}
+              </Link>
+            </h2>
+            <p className="mt-4 font-sans text-base md:text-lg font-light text-foreground/70 leading-relaxed">
+              {LAUSANNE_VAUD.en.description}
+            </p>
+            <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <Link
+                href={LAUSANNE_VAUD_PATHS.en}
+                className="inline-block font-sans text-sm font-medium text-foreground/80 border-b border-foreground/40 pb-0.5 hover:text-foreground hover:border-foreground transition-colors"
+              >
+                Read the article &rarr;
+              </Link>
+              <Link
+                href={LAUSANNE_VAUD_PATHS.fr}
+                hrefLang="fr-CH"
+                lang="fr-CH"
+                className="inline-block font-sans text-sm font-medium text-foreground/60 border-b border-foreground/25 pb-0.5 hover:text-foreground hover:border-foreground transition-colors"
+              >
+                Lire en français &rarr;
+              </Link>
+            </div>
+          </article>
 
           <div className="mt-14 space-y-12">
             {insights.map((i) => (

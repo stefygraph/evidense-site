@@ -1,5 +1,11 @@
 import { getAllInsights } from "@/lib/insights";
 import { HREFLANG, SPONSORING_MACHINE_PATHS, type LabsLocale } from "@/lib/labs";
+import {
+  ARTICLE_HREFLANG,
+  LAUSANNE_VAUD_MODIFIED,
+  LAUSANNE_VAUD_PATHS,
+  type ArticleLocale,
+} from "@/lib/articles/lausanne-vaud";
 
 export default function sitemap() {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.evidense.io";
@@ -20,6 +26,19 @@ export default function sitemap() {
           (["en", "fr", "de"] as LabsLocale[]).map((x) => [
             HREFLANG[x],
             `${baseUrl}${SPONSORING_MACHINE_PATHS[x]}`,
+          ])
+        ),
+      },
+    })),
+    // Long-form article in English and French, listed as translations.
+    ...(["en", "fr"] as ArticleLocale[]).map((l) => ({
+      url: `${baseUrl}${LAUSANNE_VAUD_PATHS[l]}`,
+      lastModified: LAUSANNE_VAUD_MODIFIED,
+      alternates: {
+        languages: Object.fromEntries(
+          (["en", "fr"] as ArticleLocale[]).map((x) => [
+            ARTICLE_HREFLANG[x],
+            `${baseUrl}${LAUSANNE_VAUD_PATHS[x]}`,
           ])
         ),
       },
