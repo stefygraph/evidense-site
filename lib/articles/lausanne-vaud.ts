@@ -155,6 +155,11 @@ export type LausanneVaudContent = {
     about: string;
     note: string;
   };
+  addresses: {
+    heading: string;
+    intro: string;
+    items: { name: string; body: string; url: string; domain: string; cta: string }[];
+  };
   faqHeading: string;
   faq: Qa[];
   sourcesHeading: string;
@@ -251,9 +256,9 @@ const en: LausanneVaudContent = {
   places: [
     {
       place: "Lausanne and the surrounding area",
-      orgs: "IOC, Court of Arbitration for Sport, UNIL and EPFL campuses",
+      orgs: "IOC, Maison du Sport International, Court of Arbitration for Sport, UNIL and EPFL campuses",
       field: "Governance, law, education and research",
-      refs: [2, 9, 10, 27],
+      refs: [2, 9, 10, 27, 32],
     },
     { place: "Nyon", orgs: "UEFA", field: "European football", refs: [3] },
     {
@@ -361,6 +366,47 @@ const en: LausanneVaudContent = {
     about: "More about Stéphane",
     note: "Independent. Based in Lausanne. Working in English and French.",
   },
+  addresses: {
+    heading: "Useful addresses in the region",
+    intro: "Where to start, depending on your project. These organisations are independent of EvidenSe.",
+    items: [
+      {
+        name: "Canton of Vaud, international sport",
+        body: "The Canton's page on international sport and the federations and organisations based in Vaud.",
+        url: "https://www.vd.ch/population/sport/sport-international-1",
+        domain: "vd.ch",
+        cta: "out_vaud",
+      },
+      {
+        name: "Lausanne Olympic Capital Foundation",
+        body: "Supports international sports organisations with their establishment and development in the region.",
+        url: "https://olympiccapital.ch/",
+        domain: "olympiccapital.ch",
+        cta: "out_olympic_capital",
+      },
+      {
+        name: "Maison du Sport International (MSI)",
+        body: "Offices by the lake in Lausanne, home to some thirty international federations and organisations and around twenty sport companies.",
+        url: "https://msi-lausanne.ch",
+        domain: "msi-lausanne.ch",
+        cta: "out_msi",
+      },
+      {
+        name: "ThinkSport",
+        body: "The sport innovation network founded in 2015 by the IOC and the Canton of Vaud: programmes, accelerator and events.",
+        url: "https://thinksport.org/",
+        domain: "thinksport.org",
+        cta: "out_thinksport",
+      },
+      {
+        name: "AISTS",
+        body: "Education and applied research in sport management, founded in 2000 by eight institutions including the IOC, EPFL and UNIL.",
+        url: "https://aists.org/",
+        domain: "aists.org",
+        cta: "out_aists",
+      },
+    ],
+  },
   faqHeading: "Questions readers ask",
   faq: [
     {
@@ -424,6 +470,8 @@ const en: LausanneVaudContent = {
     {"n": 29, "org": "FIA", "title": "Organisation", "url": "https://www.fia.com/organisation", "note": "Seat in Paris; office in Vernier, canton of Geneva."},
     {"n": 30, "org": "EvidenSe", "title": "La Sponsoring Machine", "url": "https://www.evidense.io/labs/sponsoring-machine", "note": "EvidenSe Labs, first-party account."},
     {"n": 31, "org": "The Checkered Flag", "title": "FIM opens new headquarters in Mies", "url": "https://www.thecheckeredflag.co.uk/2024/10/fim-opens-new-headquarters-in-mies", "note": "October 2024."},
+    {"n": 32, "org": "Ville de Lausanne", "title": "Maison du Sport International", "url": "https://www.lausanne.ch/en/portrait/capitale-olympique/siege-du-cio/federations-sportives-internationales/maison-du-sport-international.html", "note": "Opened in June 2006; owned in equal parts by the City, the Canton and the IOC."},
+    {"n": 33, "org": "Maison du Sport International SA", "title": "About the MSI", "url": "https://msi-lausanne.ch", "note": "Official site, Avenue de Rhodanie 54, Lausanne."},
   ],
   author: {
     name: "Stéphane Schwander",
@@ -518,9 +566,9 @@ const fr: LausanneVaudContent = {
   places: [
     {
       place: "Lausanne et ses environs",
-      orgs: "CIO, Tribunal Arbitral du Sport, campus de l'UNIL et de l'EPFL",
+      orgs: "CIO, Maison du Sport International, Tribunal Arbitral du Sport, campus de l'UNIL et de l'EPFL",
       field: "Gouvernance, droit, formation et recherche",
-      refs: [2, 9, 10, 27],
+      refs: [2, 9, 10, 27, 32],
     },
     { place: "Nyon", orgs: "UEFA", field: "Football européen", refs: [3] },
     {
@@ -628,6 +676,47 @@ const fr: LausanneVaudContent = {
     about: "En savoir plus sur Stéphane",
     note: "Indépendant. Basé à Lausanne. En français et en anglais.",
   },
+  addresses: {
+    heading: "Adresses utiles dans la région",
+    intro: "Par où commencer, selon votre projet. Ces organisations sont indépendantes d'EvidenSe.",
+    items: [
+      {
+        name: "Canton de Vaud, sport international",
+        body: "La page du Canton consacrée au sport international et aux fédérations et organisations installées dans le canton.",
+        url: "https://www.vd.ch/population/sport/sport-international-1",
+        domain: "vd.ch",
+        cta: "out_vaud",
+      },
+      {
+        name: "Fondation Lausanne Capitale Olympique",
+        body: "Accompagne les organisations sportives internationales dans leur installation et leur développement dans la région.",
+        url: "https://olympiccapital.ch/",
+        domain: "olympiccapital.ch",
+        cta: "out_olympic_capital",
+      },
+      {
+        name: "Maison du Sport International (MSI)",
+        body: "Des bureaux au bord du lac, à Lausanne, qui accueillent une trentaine de fédérations et d'organisations internationales et une vingtaine d'entreprises du sport.",
+        url: "https://msi-lausanne.ch",
+        domain: "msi-lausanne.ch",
+        cta: "out_msi",
+      },
+      {
+        name: "ThinkSport",
+        body: "Le réseau de l'innovation sportive fondé en 2015 par le CIO et le Canton de Vaud : programmes, accélérateur et événements.",
+        url: "https://thinksport.org/",
+        domain: "thinksport.org",
+        cta: "out_thinksport",
+      },
+      {
+        name: "AISTS",
+        body: "Formation et recherche appliquée en management du sport, fondée en 2000 par huit institutions dont le CIO, l'EPFL et l'UNIL.",
+        url: "https://aists.org/",
+        domain: "aists.org",
+        cta: "out_aists",
+      },
+    ],
+  },
   faqHeading: "Questions fréquentes",
   faq: [
     {
@@ -691,6 +780,8 @@ const fr: LausanneVaudContent = {
     {"n": 29, "org": "FIA", "title": "Organisation", "url": "https://www.fia.com/organisation", "note": "Siège à Paris ; bureau à Vernier, canton de Genève."},
     {"n": 30, "org": "EvidenSe", "title": "La Sponsoring Machine", "url": "https://www.evidense.io/fr/labs/sponsoring-machine", "note": "EvidenSe Labs, présentation du projet."},
     {"n": 31, "org": "The Checkered Flag", "title": "FIM opens new headquarters in Mies", "url": "https://www.thecheckeredflag.co.uk/2024/10/fim-opens-new-headquarters-in-mies", "note": "Octobre 2024."},
+    {"n": 32, "org": "Ville de Lausanne", "title": "Maison du Sport International", "url": "https://www.lausanne.ch/portrait/capitale-olympique/siege-du-cio/federations-sportives-internationales/maison-du-sport-international.html", "note": "Ouverte en juin 2006 ; propriété à parts égales de la Ville, du Canton et du CIO."},
+    {"n": 33, "org": "Maison du Sport International SA", "title": "About the MSI", "url": "https://msi-lausanne.ch", "note": "Site officiel, avenue de Rhodanie 54, Lausanne."},
   ],
   author: {
     name: "Stéphane Schwander",

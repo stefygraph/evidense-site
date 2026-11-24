@@ -399,6 +399,16 @@ export default async function LausanneVaudArticle({ locale }: { locale: ArticleL
       Figure: ({ id }: { id: string }) => (
         <Photo id={id as FigureId} c={c} className="my-10" sizes="(min-width: 768px) 680px, 100vw" />
       ),
+      // Links written in the MDX body: external ones open in a new tab
+      // and are counted as outbound clicks in GA4.
+      a: ({ href = "", children }: { href?: string; children?: ReactNode }) =>
+        href.startsWith("http") ? (
+          <a href={href} target="_blank" rel="noopener" data-cta={`out_inline_${slugify(textOf(children))}`}>
+            {children}
+          </a>
+        ) : (
+          <Link href={href}>{children}</Link>
+        ),
       h2: ({ children }: { children?: ReactNode }) => {
         const id = slugify(textOf(children));
         return (
@@ -538,6 +548,35 @@ export default async function LausanneVaudArticle({ locale }: { locale: ArticleL
                   </div>
                 ))}
               </div>
+            </section>
+
+            {/* Useful addresses: outbound links to the regional institutions */}
+            <section className={`mt-16 pt-12 border-t ${border}`} data-track="addresses" aria-labelledby="addresses">
+              <h2 id="addresses" className="font-serif text-2xl md:text-3xl leading-snug text-foreground">
+                {t(c.addresses.heading)}
+              </h2>
+              <p className="mt-3 font-sans text-sm md:text-base font-light text-foreground/60">{t(c.addresses.intro)}</p>
+              <ul className={`mt-6 border-t ${border}`}>
+                {c.addresses.items.map((a) => (
+                  <li key={a.url} className={`border-b ${border}`}>
+                    <a
+                      href={a.url}
+                      target="_blank"
+                      rel="noopener"
+                      data-cta={a.cta}
+                      className="group grid sm:grid-cols-[1fr_auto] gap-x-6 gap-y-1 py-4 hover:bg-[var(--color-slate)]/10 transition-colors -mx-2 px-2"
+                    >
+                      <span>
+                        <span className="block font-sans text-base font-medium text-foreground">{t(a.name)}</span>
+                        <span className="mt-1 block font-sans text-sm font-light leading-relaxed text-foreground/65">{t(a.body)}</span>
+                      </span>
+                      <span className="font-sans text-xs uppercase tracking-[0.12em] text-[var(--color-moss)] sm:pt-1 whitespace-nowrap group-hover:text-foreground">
+                        {a.domain} &#8599;
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </section>
 
             {/* Author */}
