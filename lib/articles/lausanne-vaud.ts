@@ -127,6 +127,11 @@ export type LausanneVaudContent = {
   figures: Record<FigureId, { alt: string; caption: string }>;
   facts: { value: string; label: string; scope: string; refs: number[] }[];
   places: { place: string; orgs: string; field: string; refs: number[] }[];
+  federations: {
+    summary: string;
+    intro: string;
+    groups: { title: string; items: { abbr: string; name: string; detail: string }[] }[];
+  };
   impact: {
     heading: string;
     rows: { area: string; amount: string; value: number }[];
@@ -274,6 +279,327 @@ const en: LausanneVaudContent = {
       refs: [4],
     },
   ],
+  federations: {
+    "summary": "See the 59 federations and organisations listed",
+    "intro": "List published by the Lausanne Olympic Capital Foundation, ‘federations’ category (page updated in February 2026, consulted on 24 November 2026). Some have their headquarters here, others an office. The location is given where it is outside Lausanne and documented.",
+    "groups": [
+      {
+        "title": "World federations",
+        "items": [
+          {
+            "abbr": "FAI",
+            "name": "World Air Sports Federation",
+            "detail": "air sports"
+          },
+          {
+            "abbr": "FIBA",
+            "name": "International Basketball Federation",
+            "detail": "basketball, Mies"
+          },
+          {
+            "abbr": "FEI",
+            "name": "Fédération Equestre Internationale",
+            "detail": "equestrian sport"
+          },
+          {
+            "abbr": "FIAS",
+            "name": "International Sambo Federation",
+            "detail": "sambo"
+          },
+          {
+            "abbr": "FIDE",
+            "name": "International Chess Federation",
+            "detail": "chess"
+          },
+          {
+            "abbr": "FIE",
+            "name": "International Fencing Federation",
+            "detail": "fencing"
+          },
+          {
+            "abbr": "FIG",
+            "name": "International Gymnastics Federation",
+            "detail": "gymnastics"
+          },
+          {
+            "abbr": "FIH",
+            "name": "International Hockey Federation",
+            "detail": "hockey"
+          },
+          {
+            "abbr": "FIM",
+            "name": "International Motorcycling Federation",
+            "detail": "motorcycling, Mies"
+          },
+          {
+            "abbr": "FISU",
+            "name": "International University Sports Federation",
+            "detail": "university sport"
+          },
+          {
+            "abbr": "FIVB",
+            "name": "International Volleyball Federation",
+            "detail": "volleyball"
+          },
+          {
+            "abbr": "IBF",
+            "name": "International Bowling Federation",
+            "detail": "bowling"
+          },
+          {
+            "abbr": "IBSF",
+            "name": "International Bobsleigh and Skeleton Federation",
+            "detail": "bobsleigh, skeleton"
+          },
+          {
+            "abbr": "ICSD",
+            "name": "International Committee of Sports for the Deaf",
+            "detail": "Deaflympics"
+          },
+          {
+            "abbr": "IFAF",
+            "name": "International Federation of American Football",
+            "detail": "American football"
+          },
+          {
+            "abbr": "IFMA",
+            "name": "International Federation of Muaythai Associations",
+            "detail": "muaythai"
+          },
+          {
+            "abbr": "IGF",
+            "name": "International Golf Federation",
+            "detail": "golf"
+          },
+          {
+            "abbr": "ISMF",
+            "name": "International Ski Mountaineering Federation",
+            "detail": "ski mountaineering"
+          },
+          {
+            "abbr": "ISU",
+            "name": "International Skating Union",
+            "detail": "skating"
+          },
+          {
+            "abbr": "ITTF",
+            "name": "International Table Tennis Federation",
+            "detail": "table tennis"
+          },
+          {
+            "abbr": "IWF",
+            "name": "International Weightlifting Federation",
+            "detail": "weightlifting"
+          },
+          {
+            "abbr": "IWUF",
+            "name": "International Wushu Federation",
+            "detail": "wushu"
+          },
+          {
+            "abbr": "",
+            "name": "Paddle Worldwide",
+            "detail": "paddle sports"
+          },
+          {
+            "abbr": "UCI",
+            "name": "Union Cycliste Internationale",
+            "detail": "cycling, Aigle"
+          },
+          {
+            "abbr": "UMB",
+            "name": "Union Mondiale de Billard",
+            "detail": "carom billiards"
+          },
+          {
+            "abbr": "UWW",
+            "name": "United World Wrestling",
+            "detail": "wrestling"
+          },
+          {
+            "abbr": "WBF",
+            "name": "World Bridge Federation",
+            "detail": "bridge"
+          },
+          {
+            "abbr": "WBSC",
+            "name": "World Baseball Softball Confederation",
+            "detail": "baseball, softball"
+          },
+          {
+            "abbr": "WCBS",
+            "name": "World Confederation of Billiards Sports",
+            "detail": "billiards"
+          },
+          {
+            "abbr": "WDSF",
+            "name": "World DanceSport Federation",
+            "detail": "dancesport"
+          },
+          {
+            "abbr": "",
+            "name": "World Aquatics",
+            "detail": "aquatics"
+          },
+          {
+            "abbr": "",
+            "name": "World Archery",
+            "detail": "archery"
+          },
+          {
+            "abbr": "",
+            "name": "World Rowing",
+            "detail": "rowing"
+          },
+          {
+            "abbr": "",
+            "name": "World Skate",
+            "detail": "skateboarding, roller sports"
+          },
+          {
+            "abbr": "",
+            "name": "World Taekwondo",
+            "detail": "taekwondo"
+          },
+          {
+            "abbr": "",
+            "name": "World Triathlon",
+            "detail": "triathlon"
+          }
+        ]
+      },
+      {
+        "title": "European federations and organisations",
+        "items": [
+          {
+            "abbr": "UEFA",
+            "name": "Union of European Football Associations",
+            "detail": "football, Nyon"
+          },
+          {
+            "abbr": "",
+            "name": "European Athletics",
+            "detail": "athletics"
+          },
+          {
+            "abbr": "",
+            "name": "European Aquatics",
+            "detail": "aquatics"
+          },
+          {
+            "abbr": "",
+            "name": "European Gymnastics",
+            "detail": "gymnastics"
+          },
+          {
+            "abbr": "UEC",
+            "name": "European Cycling Union",
+            "detail": "cycling"
+          },
+          {
+            "abbr": "EGA",
+            "name": "European Golf Association",
+            "detail": "golf"
+          },
+          {
+            "abbr": "CEB",
+            "name": "Confédération Européenne de Billard",
+            "detail": "billiards"
+          },
+          {
+            "abbr": "EPCR",
+            "name": "European Professional Club Rugby",
+            "detail": "club rugby competitions"
+          }
+        ]
+      },
+      {
+        "title": "Olympic Movement and umbrella associations",
+        "items": [
+          {
+            "abbr": "IOC",
+            "name": "International Olympic Committee",
+            "detail": ""
+          },
+          {
+            "abbr": "ANOC",
+            "name": "Association of National Olympic Committees",
+            "detail": ""
+          },
+          {
+            "abbr": "ASOIF",
+            "name": "Association of Summer Olympic International Federations",
+            "detail": ""
+          },
+          {
+            "abbr": "AIOWF",
+            "name": "Association of International Olympic Winter Sports Federations",
+            "detail": ""
+          },
+          {
+            "abbr": "ARISF",
+            "name": "Association of IOC Recognised International Sports Federations",
+            "detail": ""
+          },
+          {
+            "abbr": "AIMS",
+            "name": "Alliance of Independent recognised Members of Sport",
+            "detail": ""
+          },
+          {
+            "abbr": "",
+            "name": "SportAccord",
+            "detail": ""
+          },
+          {
+            "abbr": "IWGA",
+            "name": "International World Games Association",
+            "detail": "The World Games"
+          },
+          {
+            "abbr": "IMGA",
+            "name": "International Masters Games Association",
+            "detail": ""
+          }
+        ]
+      },
+      {
+        "title": "Justice, anti-doping, medicine, media and education",
+        "items": [
+          {
+            "abbr": "CAS",
+            "name": "Court of Arbitration for Sport",
+            "detail": ""
+          },
+          {
+            "abbr": "WADA",
+            "name": "World Anti-Doping Agency",
+            "detail": "European office"
+          },
+          {
+            "abbr": "ITA",
+            "name": "International Testing Agency",
+            "detail": "anti-doping testing"
+          },
+          {
+            "abbr": "FIMS",
+            "name": "International Federation of Sports Medicine",
+            "detail": "sports medicine"
+          },
+          {
+            "abbr": "AIPS",
+            "name": "International Sports Press Association",
+            "detail": "sports media"
+          },
+          {
+            "abbr": "AISTS",
+            "name": "International Academy of Sport Science and Technology",
+            "detail": "education and research"
+          }
+        ]
+      }
+    ]
+  },
   impact: {
     heading: "Estimated average annual economic impact, 2014 to 2019",
     rows: [
@@ -444,7 +770,7 @@ const en: LausanneVaudContent = {
     {"n": 3, "org": "UEFA", "title": "Administration", "url": "https://www.uefa.com/about/how-we-work/uefa-administration/", "note": "Official institutional page."},
     {"n": 4, "org": "Union Cycliste Internationale", "title": "The UCI", "url": "https://www.uci.org/the-uci/2QDMyzhoBXyWbVrsxge0EH", "note": "Official institutional page."},
     {"n": 5, "org": "FIBA", "title": "House of Basketball", "url": "https://about.fiba.basketball/en/organization/house-of-basketball", "note": "Official page indexed in 2026."},
-    {"n": 6, "org": "Fondation Lausanne Capitale Olympique", "title": "Lausanne Olympic Capital Ecosystem", "url": "https://olympiccapital.ch/ecosystem/", "note": "Official institutional page."},
+    {"n": 6, "org": "Fondation Lausanne Capitale Olympique", "title": "Lausanne Olympic Capital Ecosystem", "url": "https://olympiccapital.ch/ecosystem/", "note": "Ecosystem directory, federations category: 59 entries. Updated February 2026."},
     {"n": 7, "org": "AISTS", "title": "Economic Impact of International Sports Organisations in Switzerland", "url": "https://aists.org/resource/economic-impact-of-international-sports-organisations-in-switzerland/", "note": "Study published in 2021, covering 2014 to 2019."},
     {"n": 8, "org": "Comité international olympique", "title": "Une nouvelle étude souligne l'impact positif accru du CIO et d'autres organisations sportives internationales en Suisse", "url": "https://www.olympics.com/cio/news/une-nouvelle-etude-souligne-l-impact-positif-accru-du-cio-et-d-autres-organisations-sportives-internationales-en-suisse", "note": "AISTS findings for 2014 to 2019, presented by the IOC."},
     {"n": 9, "org": "EPFL", "title": "Sport Technology", "url": "https://www.epfl.ch/innovation/domains/sport/", "note": "Official institutional page."},
@@ -584,6 +910,327 @@ const fr: LausanneVaudContent = {
       refs: [4],
     },
   ],
+  federations: {
+    "summary": "Voir les 59 fédérations et organisations recensées",
+    "intro": "Liste publiée par la Fondation Lausanne Capitale Olympique, catégorie « fédérations » (page mise à jour en février 2026, consultée le 24 novembre 2026). Certaines y ont leur siège, d'autres un bureau. Le lieu est précisé lorsqu'il est hors de Lausanne et documenté.",
+    "groups": [
+      {
+        "title": "Fédérations mondiales",
+        "items": [
+          {
+            "abbr": "FAI",
+            "name": "Fédération Aéronautique Internationale",
+            "detail": "sports aériens"
+          },
+          {
+            "abbr": "FIBA",
+            "name": "Fédération Internationale de Basketball",
+            "detail": "basketball, Mies"
+          },
+          {
+            "abbr": "FEI",
+            "name": "Fédération Equestre Internationale",
+            "detail": "sports équestres"
+          },
+          {
+            "abbr": "FIAS",
+            "name": "Fédération Internationale de Sambo",
+            "detail": "sambo"
+          },
+          {
+            "abbr": "FIDE",
+            "name": "Fédération Internationale des Échecs",
+            "detail": "échecs"
+          },
+          {
+            "abbr": "FIE",
+            "name": "Fédération Internationale d'Escrime",
+            "detail": "escrime"
+          },
+          {
+            "abbr": "FIG",
+            "name": "Fédération Internationale de Gymnastique",
+            "detail": "gymnastique"
+          },
+          {
+            "abbr": "FIH",
+            "name": "Fédération Internationale de Hockey",
+            "detail": "hockey sur gazon"
+          },
+          {
+            "abbr": "FIM",
+            "name": "Fédération Internationale de Motocyclisme",
+            "detail": "motocyclisme, Mies"
+          },
+          {
+            "abbr": "FISU",
+            "name": "Fédération Internationale du Sport Universitaire",
+            "detail": "sport universitaire"
+          },
+          {
+            "abbr": "FIVB",
+            "name": "Fédération Internationale de Volleyball",
+            "detail": "volleyball"
+          },
+          {
+            "abbr": "IBF",
+            "name": "International Bowling Federation",
+            "detail": "bowling"
+          },
+          {
+            "abbr": "IBSF",
+            "name": "Fédération Internationale de Bobsleigh et de Skeleton",
+            "detail": "bobsleigh, skeleton"
+          },
+          {
+            "abbr": "ICSD",
+            "name": "Comité International des Sports des Sourds",
+            "detail": "Deaflympics"
+          },
+          {
+            "abbr": "IFAF",
+            "name": "International Federation of American Football",
+            "detail": "football américain"
+          },
+          {
+            "abbr": "IFMA",
+            "name": "International Federation of Muaythai Associations",
+            "detail": "muaythaï"
+          },
+          {
+            "abbr": "IGF",
+            "name": "International Golf Federation",
+            "detail": "golf"
+          },
+          {
+            "abbr": "ISMF",
+            "name": "International Ski Mountaineering Federation",
+            "detail": "ski-alpinisme"
+          },
+          {
+            "abbr": "ISU",
+            "name": "Union Internationale de Patinage",
+            "detail": "patinage"
+          },
+          {
+            "abbr": "ITTF",
+            "name": "Fédération Internationale de Tennis de Table",
+            "detail": "tennis de table"
+          },
+          {
+            "abbr": "IWF",
+            "name": "Fédération Internationale d'Haltérophilie",
+            "detail": "haltérophilie"
+          },
+          {
+            "abbr": "IWUF",
+            "name": "International Wushu Federation",
+            "detail": "wushu"
+          },
+          {
+            "abbr": "",
+            "name": "Paddle Worldwide",
+            "detail": "sports de pagaie"
+          },
+          {
+            "abbr": "UCI",
+            "name": "Union Cycliste Internationale",
+            "detail": "cyclisme, Aigle"
+          },
+          {
+            "abbr": "UMB",
+            "name": "Union Mondiale de Billard",
+            "detail": "billard carambole"
+          },
+          {
+            "abbr": "UWW",
+            "name": "United World Wrestling",
+            "detail": "lutte"
+          },
+          {
+            "abbr": "WBF",
+            "name": "World Bridge Federation",
+            "detail": "bridge"
+          },
+          {
+            "abbr": "WBSC",
+            "name": "World Baseball Softball Confederation",
+            "detail": "baseball, softball"
+          },
+          {
+            "abbr": "WCBS",
+            "name": "World Confederation of Billiards Sports",
+            "detail": "billard"
+          },
+          {
+            "abbr": "WDSF",
+            "name": "World DanceSport Federation",
+            "detail": "danse sportive"
+          },
+          {
+            "abbr": "",
+            "name": "World Aquatics",
+            "detail": "sports aquatiques"
+          },
+          {
+            "abbr": "",
+            "name": "World Archery",
+            "detail": "tir à l'arc"
+          },
+          {
+            "abbr": "",
+            "name": "World Rowing",
+            "detail": "aviron"
+          },
+          {
+            "abbr": "",
+            "name": "World Skate",
+            "detail": "skateboard, roller"
+          },
+          {
+            "abbr": "",
+            "name": "World Taekwondo",
+            "detail": "taekwondo"
+          },
+          {
+            "abbr": "",
+            "name": "World Triathlon",
+            "detail": "triathlon"
+          }
+        ]
+      },
+      {
+        "title": "Fédérations et organisations européennes",
+        "items": [
+          {
+            "abbr": "UEFA",
+            "name": "Union des associations européennes de football",
+            "detail": "football, Nyon"
+          },
+          {
+            "abbr": "",
+            "name": "European Athletics",
+            "detail": "athlétisme"
+          },
+          {
+            "abbr": "",
+            "name": "European Aquatics",
+            "detail": "sports aquatiques"
+          },
+          {
+            "abbr": "",
+            "name": "European Gymnastics",
+            "detail": "gymnastique"
+          },
+          {
+            "abbr": "UEC",
+            "name": "Union Européenne de Cyclisme",
+            "detail": "cyclisme"
+          },
+          {
+            "abbr": "EGA",
+            "name": "European Golf Association",
+            "detail": "golf"
+          },
+          {
+            "abbr": "CEB",
+            "name": "Confédération Européenne de Billard",
+            "detail": "billard"
+          },
+          {
+            "abbr": "EPCR",
+            "name": "European Professional Club Rugby",
+            "detail": "compétitions de rugby de clubs"
+          }
+        ]
+      },
+      {
+        "title": "Mouvement olympique et associations faîtières",
+        "items": [
+          {
+            "abbr": "CIO",
+            "name": "Comité international olympique",
+            "detail": ""
+          },
+          {
+            "abbr": "ACNO",
+            "name": "Association des Comités Nationaux Olympiques",
+            "detail": ""
+          },
+          {
+            "abbr": "ASOIF",
+            "name": "Association of Summer Olympic International Federations",
+            "detail": ""
+          },
+          {
+            "abbr": "AIOWF",
+            "name": "Association of International Olympic Winter Sports Federations",
+            "detail": ""
+          },
+          {
+            "abbr": "ARISF",
+            "name": "Association of IOC Recognised International Sports Federations",
+            "detail": ""
+          },
+          {
+            "abbr": "AIMS",
+            "name": "Alliance of Independent recognised Members of Sport",
+            "detail": ""
+          },
+          {
+            "abbr": "",
+            "name": "SportAccord",
+            "detail": ""
+          },
+          {
+            "abbr": "IWGA",
+            "name": "International World Games Association",
+            "detail": "The World Games"
+          },
+          {
+            "abbr": "IMGA",
+            "name": "International Masters Games Association",
+            "detail": ""
+          }
+        ]
+      },
+      {
+        "title": "Justice, antidopage, médecine, médias et formation",
+        "items": [
+          {
+            "abbr": "TAS",
+            "name": "Tribunal Arbitral du Sport",
+            "detail": ""
+          },
+          {
+            "abbr": "AMA",
+            "name": "Agence mondiale antidopage",
+            "detail": "bureau européen"
+          },
+          {
+            "abbr": "ITA",
+            "name": "International Testing Agency",
+            "detail": "contrôles antidopage"
+          },
+          {
+            "abbr": "FIMS",
+            "name": "Fédération Internationale de Médecine du Sport",
+            "detail": "médecine du sport"
+          },
+          {
+            "abbr": "AIPS",
+            "name": "Association Internationale de la Presse Sportive",
+            "detail": "médias sportifs"
+          },
+          {
+            "abbr": "AISTS",
+            "name": "Académie Internationale des Sciences et Techniques du Sport",
+            "detail": "formation et recherche"
+          }
+        ]
+      }
+    ]
+  },
   impact: {
     heading: "Impact économique annuel moyen estimé, 2014 à 2019",
     rows: [
@@ -754,7 +1401,7 @@ const fr: LausanneVaudContent = {
     {"n": 3, "org": "UEFA", "title": "Administration", "url": "https://www.uefa.com/about/how-we-work/uefa-administration/", "note": "Page officielle."},
     {"n": 4, "org": "Union Cycliste Internationale", "title": "The UCI", "url": "https://www.uci.org/the-uci/2QDMyzhoBXyWbVrsxge0EH", "note": "Page officielle."},
     {"n": 5, "org": "FIBA", "title": "House of Basketball", "url": "https://about.fiba.basketball/en/organization/house-of-basketball", "note": "Page officielle indexée en 2026."},
-    {"n": 6, "org": "Fondation Lausanne Capitale Olympique", "title": "Lausanne Olympic Capital Ecosystem", "url": "https://olympiccapital.ch/ecosystem/", "note": "Page officielle."},
+    {"n": 6, "org": "Fondation Lausanne Capitale Olympique", "title": "Lausanne Olympic Capital Ecosystem", "url": "https://olympiccapital.ch/ecosystem/", "note": "Annuaire de l'écosystème, catégorie fédérations : 59 entrées. Mise à jour en février 2026."},
     {"n": 7, "org": "AISTS", "title": "Economic Impact of International Sports Organisations in Switzerland", "url": "https://aists.org/resource/economic-impact-of-international-sports-organisations-in-switzerland/", "note": "Étude publiée en 2021, période 2014 à 2019."},
     {"n": 8, "org": "Comité international olympique", "title": "Une nouvelle étude souligne l'impact positif accru du CIO et d'autres organisations sportives internationales en Suisse", "url": "https://www.olympics.com/cio/news/une-nouvelle-etude-souligne-l-impact-positif-accru-du-cio-et-d-autres-organisations-sportives-internationales-en-suisse", "note": "Résultats AISTS pour 2014 à 2019, présentés par le CIO."},
     {"n": 9, "org": "EPFL", "title": "Sport Technology", "url": "https://www.epfl.ch/innovation/domains/sport/", "note": "Page officielle."},

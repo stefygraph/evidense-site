@@ -200,6 +200,38 @@ function Blocks(c: LausanneVaudContent) {
         ))}
       </div>
     ),
+    federations: (
+      <details className={`my-8 border ${border} group`} data-track="federations">
+        <summary className="cursor-pointer list-none flex items-center justify-between gap-4 px-5 py-4 font-sans text-sm md:text-base text-foreground hover:bg-[var(--color-slate)]/10">
+          <span>{t(c.federations.summary)}</span>
+          <span className="text-[var(--color-moss)] text-xl leading-none transition-transform group-open:rotate-45" aria-hidden="true">
+            +
+          </span>
+        </summary>
+        <div className="px-5 pb-6">
+          <p className="font-sans text-xs leading-relaxed font-light text-foreground/55">
+            {t(c.federations.intro)}
+            <Ref n="6" />
+          </p>
+          {c.federations.groups.map((g) => (
+            <div key={g.title} className="mt-6">
+              <p className={`${label} pb-2 border-b ${border}`}>
+                {t(g.title)} <span className="text-foreground/35">({g.items.length})</span>
+              </p>
+              <ul className="mt-2 grid sm:grid-cols-2 gap-x-6">
+                {g.items.map((it) => (
+                  <li key={it.name} className={`py-2 border-b ${border} font-sans text-sm leading-snug`}>
+                    {it.abbr && <span className="font-semibold text-foreground mr-1.5">{it.abbr}</span>}
+                    <span className="text-foreground/80">{t(it.name)}</span>
+                    {it.detail && <span className="block text-xs font-light text-foreground/50 mt-0.5">{t(it.detail)}</span>}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </details>
+    ),
     impact: (
       <figure className={`my-10 border ${border} p-5 md:p-7`}>
         <figcaption className={label}>{t(c.impact.heading)}</figcaption>
