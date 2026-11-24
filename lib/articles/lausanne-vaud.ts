@@ -187,7 +187,7 @@ const en: LausanneVaudContent = {
   eyebrow: "The Briefing · Lausanne and Vaud",
   h1: "Lausanne and Vaud: why international sport lives here, and what we can build from it.",
   standfirst:
-    "In Lausanne, a love of sport might mean watching an Olympic final, going for a bike ride or cheering at your children's match. All these experiences sit alongside something quite extraordinary: an important part of international sport is planned and organised here.",
+    "In Lausanne, a love of sport might mean watching an Olympic final, going for a bike ride, cheering at your children's match or studying it. All these experiences sit alongside something quite extraordinary: an important part of international sport is planned and organised here.",
   inBrief: {
     heading: "In brief",
     items: [
@@ -834,7 +834,7 @@ const fr: LausanneVaudContent = {
   eyebrow: "The Briefing · Lausanne et Vaud",
   h1: "Lausanne et Vaud : pourquoi le sport international vit ici, et ce que nous pouvons en faire.",
   standfirst:
-    "À Lausanne, on peut aimer le sport pour une finale olympique, une sortie à vélo ou le match de ses enfants. Toutes ces façons de le vivre cohabitent avec une réalité assez exceptionnelle : une partie importante du sport international se prépare et s'organise ici.",
+    "À Lausanne, aimer le sport, c'est regarder une finale olympique, partir à vélo, encourager ses enfants au bord du terrain ou l'étudier. Toutes ces façons de le vivre cohabitent avec une réalité assez exceptionnelle : une partie importante du sport international se prépare et s'organise ici.",
   inBrief: {
     heading: "En bref",
     items: [
