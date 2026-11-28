@@ -13,18 +13,20 @@ import { BOOKING_URL, SITE_URL } from "@/lib/site";
 // reader sees the whole publication. Fed by lib/articles/registry.ts.
 
 const TITLE = "The Briefing en français";
+// Search title: the brand name plus what the notes are about.
+const META_TITLE = "The Briefing en français : sport, valeur et décisions";
 const DESCRIPTION =
-  "Les articles d'EvidenSe en français : sport international, Lausanne et Vaud, valeur commerciale et décisions. Des notes pour celles et ceux qui décident.";
+  "Les articles d'EvidenSe en français, par Stéphane Schwander : sport international, Lausanne et Vaud, valeur commerciale et décisions. Rares, jamais du bruit.";
 
 export const metadata: Metadata = {
-  title: `${TITLE} | EvidenSe`,
+  title: `${META_TITLE} | EvidenSe`,
   description: DESCRIPTION,
   alternates: {
     canonical: BRIEFING_PATHS.fr,
     languages: { en: BRIEFING_PATHS.en, "fr-CH": BRIEFING_PATHS.fr, "x-default": BRIEFING_PATHS.en },
   },
   openGraph: {
-    title: TITLE,
+    title: META_TITLE,
     description: DESCRIPTION,
     type: "website",
     url: BRIEFING_PATHS.fr,

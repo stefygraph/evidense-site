@@ -9,9 +9,9 @@ export const metadata = {
     canonical: "/insights",
     languages: { en: "/insights", "fr-CH": "/fr/insights", "x-default": "/insights" },
   },
-  title: "The Briefing | EvidenSe",
+  title: "The Briefing: sport revenue, sponsorship and decisions | EvidenSe",
   description:
-    "Notes for people who decide. Rare, never noise. Evidence-led writing on sport revenue, sponsorship value and decisions under pressure.",
+    "Evidence-led notes by Stéphane Schwander on sport revenue, sponsorship value, international sport and decisions under pressure. Rare, never noise.",
 };
 
 export default function InsightsPage() {
