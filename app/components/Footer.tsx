@@ -46,6 +46,18 @@ export default function Footer() {
       </div>
       <div className="mt-6 pt-6 border-t border-[var(--color-slate)]/40 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 text-sm font-sans font-light text-foreground/70">
         <p>
+          <span className="text-foreground uppercase tracking-widest text-xs font-bold mr-3">The Briefing</span>
+          Notes for people who decide.
+          <span className="ml-2 text-foreground/50">
+            (<Link href="/fr/insights" hrefLang="fr-CH" lang="fr-CH" className="hover:text-foreground transition-colors">en français</Link>)
+          </span>
+        </p>
+        <Link href="/insights" className="shrink-0 hover:text-foreground transition-colors underline underline-offset-4">
+          All notes
+        </Link>
+      </div>
+      <div className="mt-6 pt-6 border-t border-[var(--color-slate)]/40 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 text-sm font-sans font-light text-foreground/70">
+        <p>
           <span className="text-foreground uppercase tracking-widest text-xs font-bold mr-3">EvidenSe Labs</span>
           <Link href="/labs/sponsoring-machine" className="hover:text-foreground transition-colors">La Sponsoring Machine</Link>
           <span className="ml-2 text-foreground/50">

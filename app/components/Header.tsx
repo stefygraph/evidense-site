@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { BOOKING_URL } from "@/lib/site";
 
@@ -26,6 +27,9 @@ const ANCHORS: Anchor[] = [
   { label: "Approach", href: "/#approach" },
   { label: "Sprint", href: "/#approach" },
   { label: "About", href: "/about" },
+  // The Briefing: from 1024px, and language-aware (on /fr/ pages it opens
+  // the French index). On smaller screens the footer carries it.
+  { label: "Briefing", href: "/insights", wideOnly: true },
   { label: "Index", href: "https://index.evidense.io", desktopOnly: true, external: true },
   { label: "Labs", href: "/labs", desktopOnly: true },
   // Contact only from 1024px: at tablet width six links plus the CTA
@@ -35,6 +39,9 @@ const ANCHORS: Anchor[] = [
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname() ?? "";
+  const french = pathname === "/fr" || pathname.startsWith("/fr/");
+  const hrefFor = (a: Anchor) => (a.href === "/insights" && french ? "/fr/insights" : a.href);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -80,7 +87,7 @@ export default function Header() {
             ) : (
               <Link
                 key={a.label}
-                href={a.href}
+                href={hrefFor(a)}
                 className={`font-sans text-xs md:text-sm font-medium text-foreground/70 hover:text-foreground transition-colors tracking-wide ${
                   a.wideOnly ? "hidden lg:inline" : a.desktopOnly ? "hidden md:inline" : ""
                 }`}
