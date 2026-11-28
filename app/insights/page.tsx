@@ -5,7 +5,10 @@ import { getAllInsights } from "@/lib/insights";
 import { LAUSANNE_VAUD, LAUSANNE_VAUD_PATHS, LAUSANNE_VAUD_PUBLISHED } from "@/lib/articles/lausanne-vaud";
 
 export const metadata = {
-  alternates: { canonical: "/insights" },
+  alternates: {
+    canonical: "/insights",
+    languages: { en: "/insights", "fr-CH": "/fr/insights", "x-default": "/insights" },
+  },
   title: "The Briefing | EvidenSe",
   description:
     "Notes for people who decide. Rare, never noise. Evidence-led writing on sport revenue, sponsorship value and decisions under pressure.",
@@ -20,6 +23,15 @@ export default function InsightsPage() {
 
       <div className="px-6 md:px-16 max-w-7xl mx-auto">
         <div className="max-w-3xl pt-16 md:pt-24 pb-16 md:pb-20">
+          <nav aria-label="Language" className="flex justify-end gap-3 font-sans text-xs uppercase tracking-[0.15em] text-foreground/50 mb-6">
+            <span className="text-foreground" aria-current="page">
+              EN
+            </span>
+            <span className="text-foreground/25">/</span>
+            <Link href="/fr/insights" hrefLang="fr-CH" lang="fr-CH" className="hover:text-foreground transition-colors">
+              FR
+            </Link>
+          </nav>
           <h1 className="font-serif text-4xl md:text-5xl leading-tight tracking-tight text-foreground mb-4">
             The Briefing.
           </h1>

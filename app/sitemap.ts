@@ -14,7 +14,14 @@ export default function sitemap() {
   return [
     { url: `${baseUrl}/`, lastModified: new Date() },
     { url: `${baseUrl}/about`, lastModified: new Date() },
-    { url: `${baseUrl}/insights`, lastModified: new Date() },
+    // The Briefing index in English and French, listed as translations.
+    ...["/insights", "/fr/insights"].map((path) => ({
+      url: `${baseUrl}${path}`,
+      lastModified: new Date(),
+      alternates: {
+        languages: { en: `${baseUrl}/insights`, "fr-CH": `${baseUrl}/fr/insights` },
+      },
+    })),
     { url: `${baseUrl}/labs`, lastModified: new Date() },
     // La Sponsoring Machine in three languages, each entry listing all
     // three so search engines treat them as translations of one page.

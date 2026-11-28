@@ -11,6 +11,7 @@ import Header from "../Header";
 import ArticleTracking from "./ArticleTracking";
 import { BOOKING_URL, CONTACT_EMAIL, FOUNDER_SAME_AS, SITE_URL } from "@/lib/site";
 import { frenchTypography } from "@/lib/labs";
+import { BRIEFING_PATHS } from "@/lib/articles/registry";
 import {
   ARTICLE_HREFLANG,
   FIGURE_SOURCES,
@@ -392,7 +393,7 @@ function jsonLd(c: LausanneVaudContent, toc: { id: string; title: string }[]) {
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "EvidenSe", item: `${SITE_URL}/` },
-          { "@type": "ListItem", position: 2, name: "The Briefing", item: `${SITE_URL}/insights` },
+          { "@type": "ListItem", position: 2, name: "The Briefing", item: `${SITE_URL}${BRIEFING_PATHS[c.locale]}` },
           { "@type": "ListItem", position: 3, name: c.metaTitle, item: url },
         ],
       },
@@ -475,7 +476,7 @@ export default async function LausanneVaudArticle({ locale }: { locale: ArticleL
         <div className="max-w-3xl pt-10 md:pt-16">
           <div className="flex flex-wrap items-center justify-between gap-4 font-sans text-xs uppercase tracking-[0.15em] text-foreground/50">
             <nav aria-label="Breadcrumb">
-              <Link href="/insights" className="hover:text-foreground transition-colors">
+              <Link href={BRIEFING_PATHS[locale]} className="hover:text-foreground transition-colors">
                 &larr; {c.breadcrumb}
               </Link>
             </nav>
